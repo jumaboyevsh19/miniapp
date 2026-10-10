@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bot Mini App</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{--bg:#f3f5fa;--card:#fff;--text:#0f1320;--sub:#737a90;--line:#e7eaf3;--acc:#4f6bff;--acc2:#8b5cf6;--ok:#12a36d;--bad:#e5484d;--warn:#f59e0b;--sh:0 1px 2px rgba(20,30,70,.05),0 8px 24px rgba(20,30,70,.07);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
@@ -107,6 +108,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .rd{width:18px;height:18px;border-radius:50%;border:2px solid var(--line)}.mt.on .rd{border:5px solid var(--acc)}
 .toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translate(-50%,-90px);background:var(--text);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:13.5px;font-weight:600;z-index:30;transition:.3s;display:flex;gap:8px;align-items:center}
 .toast.on{transform:translate(-50%,0)}
+.cd:has(#chart){display:none}
 </style>
 </head>
 <body>
@@ -138,7 +140,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 <div class="app">
  <div class="top">
   <div class="ring"><div class="av">U</div></div>
-  <div class="t"><b>Foydalanuvchi</b><span class="lv"><svg class="i"><use href="#award"/></svg>Gold</span></div>
+  <div class="t"><b>Foydalanuvchi</b><span class="lv"><svg class="i"><use href="#award"/></svg><span id="lvt">Bronza</span></span></div>
   <button class="ib"><svg class="i"><use href="#bell"/></svg><i></i></button>
  </div>
 
@@ -146,8 +148,8 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
   <div class="bal">
    <div class="br"><span>Umumiy balans</span><button id="eyeb"><svg class="i"><use href="#eye"/></svg></button></div>
    <h1 id="bv">128 500 so'm</h1>
-   <span class="chg"><svg class="i"><use href="#trend"/></svg>+12.4% bu hafta</span>
-   <div class="bn"><span>ID 1234 5678 9012</span><div class="chip"></div></div>
+   <span class="chg"><svg class="i"><use href="#trend"/></svg><span id="cg">0 ta taklif</span></span>
+   <div class="bn"><span id="uid">ID</span><div class="chip"></div></div>
    <div class="ba">
     <button data-sheet><svg class="i"><use href="#plus"/></svg>To'ldirish</button>
     <button><svg class="i"><use href="#out"/></svg>Yechish</button>
@@ -170,9 +172,9 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
   </div>
 
   <div class="cd">
-   <div class="ch"><div><h2>Gold darajasi</h2><small>Platinum'gacha 320 ball</small></div><b style="color:var(--acc)">68%</b></div>
-   <div class="pr"><i></i></div>
-   <div class="pl2"><span>680 ball</span><span>1 000 ball</span></div>
+   <div class="ch"><div><h2 id="lvn">Bronza darajasi</h2><small id="lvs"></small></div><b id="lvp" style="color:var(--acc)">0%</b></div>
+   <div class="pr"><i id="lvb" style="width:0%"></i></div>
+   <div class="pl2"><span id="l1"></span><span id="l2"></span></div>
   </div>
 
   <div class="ch" style="margin:0 2px 10px"><h2>Amallar tarixi</h2></div>
@@ -194,15 +196,11 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
  <section class="page" id="ref">
   <div class="cd hero">
    <span class="ic g" style="margin:0 auto"><svg class="i"><use href="#users"/></svg></span>
-   <h1>9 500 so'm</h1><small>Takliflardan daromad</small>
-   <div class="gs"><div><b>37</b><small>Do'stlar</small></div><div><b>1 500</b><small>Har bir taklif</small></div></div>
-   <div class="ref"><span>t.me/bot?start=123456789</span><button id="cp"><svg class="i" style="width:14px;height:14px"><use href="#copy"/></svg>Nusxa</button></div>
+   <h1 id="re">0 so'm</h1><small>Takliflardan daromad</small>
+   <div class="gs"><div><b id="rc">0</b><small>Do'stlar</small></div><div><b>1 500</b><small>Har bir taklif</small></div></div>
+   <div class="ref"><span id="rls"></span><button id="cp"><svg class="i" style="width:14px;height:14px"><use href="#copy"/></svg>Nusxa</button></div>
   </div>
-  <div class="list">
-   <div class="row"><div class="ic p"><svg class="i"><use href="#user"/></svg></div><div class="m"><b>Jasur A.</b><small>Bugun qo'shildi</small></div><span class="pos">+1 500</span></div>
-   <div class="row"><div class="ic b"><svg class="i"><use href="#user"/></svg></div><div class="m"><b>Dilnoza K.</b><small>Kecha qo'shildi</small></div><span class="pos">+1 500</span></div>
-   <div class="row"><div class="ic o"><svg class="i"><use href="#user"/></svg></div><div class="m"><b>Bekzod R.</b><small>3 kun oldin</small></div><span class="pos">+1 500</span></div>
-  </div>
+  <div class="list" id="rl"></div>
  </section>
 
  <section class="page" id="me">
@@ -241,12 +239,17 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 
 <script>
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
+var Q=new URLSearchParams(location.search),TG=window.Telegram&&Telegram.WebApp,U=(TG&&TG.initDataUnsafe&&TG.initDataUnsafe.user)||{};
+try{TG.ready();TG.expand()}catch(e){}
+var BAL=+Q.get("b")||0,REF=+Q.get("r")||0,ERN=+Q.get("e")||0,BOT=Q.get("bot")||"",HIS=[];
+try{HIS=JSON.parse(Q.get("h")||"[]")}catch(e){}
+var RL="https://t.me/"+BOT+"?start=ref_"+(U.id||"");
 function on(list,b){list.forEach(function(o){o.classList.remove("on")});b.classList.add("on")}
 function toast(t){$("#tt").textContent=t;$("#ts").classList.add("on");setTimeout(function(){$("#ts").classList.remove("on")},2000)}
 // nav
 $$(".nav button").forEach(function(b){b.onclick=function(){on($$(".nav button"),b);on($$(".page"),$("section#"+b.dataset.t));window.scrollTo(0,0)}});
 // balance hide
-var hid=false;$("#eyeb").onclick=function(){hid=!hid;$("#bv").textContent=hid?"•••••• so'm":"128 500 so'm"};
+var hid=false;$("#eyeb").onclick=function(){hid=!hid;$("#bv").textContent=hid?"•••••• so'm":fm(BAL)+" so'm"};
 // chart
 var CD=[[[20,34,28,52,44,70,62],[14,22,30,24,40,34,46]],[[30,42,38,60,52,74,66,88,80,96],[20,30,26,40,34,48,42,56,50,60]],[[40,52,60,56,72,68,90,84,100,94,110,120],[26,34,30,44,40,52,48,60,56,66,62,70]]];
 function path(a){var W=320,H=150,m=Math.max.apply(null,a)*1.15,p=a.map(function(v,i){return[i*W/(a.length-1),H-8-(v/m)*(H-20)]}),d="M"+p[0][0]+" "+p[0][1];
@@ -257,8 +260,9 @@ $("#chart").innerHTML='<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"
 '<path d="'+a.d+' L320 150 L0 150Z" fill="url(#ga)"/><path d="'+b.d+'" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" opacity=".8"/><path d="'+a.d+'" fill="none" stroke="#4f6bff" stroke-width="2.6" stroke-linecap="round"/><circle cx="'+(a.l[0]-4)+'" cy="'+a.l[1]+'" r="5" fill="var(--card)" stroke="#4f6bff" stroke-width="2.5"/>'}
 chart(0);$$("#pt button").forEach(function(b){b.onclick=function(){on($$("#pt button"),b);chart(+b.dataset.d)}});
 // tx
-var T=[["Stars xaridi","Bugun, 14:20","-9 000","o","star","o"],["Balans to'ldirildi","Kecha, 18:05","+50 000","i","in","g"],["Taklif bonusi","2 kun oldin","+1 500","i","users","p"],["Premium 1 oy","3 kun oldin","-45 000","o","gift","b"],["Balans to'ldirildi","5 kun oldin","+30 000","i","in","g"]];
-function tx(f){$("#tx").innerHTML=T.filter(function(x){return f=="a"||x[3]==f}).map(function(x){return '<div class="row"><div class="ic '+x[5]+'"><svg class="i"><use href="#'+x[4]+'"/></svg></div><div class="m"><b>'+x[0]+'</b><small>'+x[1]+'</small></div><span class="'+(x[3]=="i"?"pos":"neg")+'">'+x[2]+'</span></div>'}).join("")}
+function dt(ms){var d=new Date(ms),p=function(n){return(n<10?"0":"")+n};return p(d.getDate())+"."+p(d.getMonth()+1)+", "+p(d.getHours())+":"+p(d.getMinutes())}
+var T=HIS.map(function(x){var i=x.a>0;return [x.t,dt(x.d),(i?"+":"-")+fm(Math.abs(x.a)),i?"i":"o",/Taklif/.test(x.t)?"users":(i?"in":"out"),i?"g":"o"]});
+function tx(f){var H=T.filter(function(x){return f=="a"||x[3]==f}).map(function(x){return '<div class="row"><div class="ic '+x[5]+'"><svg class="i"><use href="#'+x[4]+'"/></svg></div><div class="m"><b>'+x[0]+'</b><small>'+x[1]+'</small></div><span class="'+(x[3]=="i"?"pos":"neg")+'">'+x[2]+'</span></div>'}).join("");$("#tx").innerHTML=H||'<div class="row"><div class="m"><small>Hozircha amallar yo&#39;q</small></div></div>'}
 tx("a");$$("#fl button").forEach(function(b){b.onclick=function(){on($$("#fl button"),b);tx(b.dataset.f)}});
 // shop
 var D={s:[["50 Stars","Tezkor yetkazish",9000,""],["100 Stars","Tezkor yetkazish",17000,"Ommabop"],["250 Stars","Tezkor yetkazish",42000,""],["500 Stars","Tezkor yetkazish",82000,"-5%"]],p:[["1 oy","Telegram Premium",45000,""],["3 oy","Telegram Premium",130000,"Ommabop"],["6 oy","Telegram Premium",240000,""],["12 oy","Telegram Premium",430000,"-20%"]]};
@@ -275,9 +279,25 @@ $$("#am button").forEach(function(b){b.onclick=function(){on($$("#am button"),b)
 $$(".mt").forEach(function(b){b.onclick=function(){on($$(".mt"),b)}});
 $("#go2").onclick=function(){sh(false);toast("To'lov so'rovi yuborildi")};
 // misc
-$("#cp").onclick=function(){try{navigator.clipboard.writeText("t.me/bot?start=123456789")}catch(e){}toast("Havola nusxalandi")};
+$("#cp").onclick=function(){try{navigator.clipboard.writeText(RL)}catch(e){}toast("Havola nusxalandi")};
 $$("[data-sw]").forEach(function(s){s.onclick=function(){s.classList.toggle("on")}});
 $("#dk").onclick=function(){var d=$("#dk").classList.toggle("on");document.documentElement.setAttribute("data-theme",d?"dark":"light")};
+var NAME=U.first_name||"Foydalanuvchi",UID=U.id||"";
+$(".top .t b").textContent=NAME;
+$$(".av").forEach(function(a){a.textContent=(NAME[0]||"U").toUpperCase()});
+$("#bv").textContent=fm(BAL)+" so'm";$("#cg").textContent=REF+" ta taklif";
+$("#uid").textContent=UID?"ID "+UID:"ID";
+$("#me h1").textContent=NAME;$("#me .hero small").textContent=(U.username?"@"+U.username+" \u00b7 ":"")+(UID?"ID "+UID:"");
+$("#re").textContent=fm(ERN)+" so'm";$("#rc").textContent=REF;$("#rls").textContent=RL.replace("https://","");
+var LV=[["Bronza",0],["Silver",5],["Gold",15],["Platinum",30]],li=0;
+LV.forEach(function(l,i){if(REF>=l[1])li=i});
+var nx=LV[li+1],pc=nx?Math.round((REF-LV[li][1])/(nx[1]-LV[li][1])*100):100;
+$("#lvn").textContent=LV[li][0]+" darajasi";$("#lvt").textContent=LV[li][0];
+$("#lvs").textContent=nx?nx[0]+"'gacha "+(nx[1]-REF)+" ta taklif":"Eng yuqori daraja";
+$("#lvp").textContent=pc+"%";$("#lvb").style.width=pc+"%";
+$("#l1").textContent=REF+" taklif";$("#l2").textContent=nx?nx[1]+" taklif":REF+" taklif";
+var RH=HIS.filter(function(x){return /Taklif/.test(x.t)});
+$("#rl").innerHTML=RH.length?RH.map(function(x){return '<div class="row"><div class="ic p"><svg class="i"><use href="#user"/></svg></div><div class="m"><b>Yangi do&#39;st</b><small>'+dt(x.d)+'</small></div><span class="pos">+'+fm(x.a)+'</span></div>'}).join(""):'<div class="row"><div class="m"><small>Hozircha takliflar yo&#39;q</small></div></div>';
 </script>
 </body>
 </html>
