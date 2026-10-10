@@ -285,6 +285,7 @@ $("#dk").onclick=function(){var d=$("#dk").classList.toggle("on");document.docum
 var NAME=U.first_name||"Foydalanuvchi",UID=U.id||"";
 $(".top .t b").textContent=NAME;
 $$(".av").forEach(function(a){a.textContent=(NAME[0]||"U").toUpperCase()});
+if(U.photo_url){var im=new Image();im.onload=function(){$$(".av").forEach(function(e){e.textContent="";e.style.backgroundImage='url("'+U.photo_url+'")';e.style.backgroundSize="cover";e.style.backgroundPosition="center"})};im.src=U.photo_url}
 $("#bv").textContent=fm(BAL)+" so'm";$("#cg").textContent=REF+" ta taklif";
 $("#uid").textContent=UID?"ID "+UID:"ID";
 $("#me h1").textContent=NAME;$("#me .hero small").textContent=(U.username?"@"+U.username+" \u00b7 ":"")+(UID?"ID "+UID:"");
