@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bot Mini App</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{--bg:#f3f5fa;--card:#fff;--text:#0f1320;--sub:#737a90;--line:#e7eaf3;--acc:#0e9f8e;--acc2:#2563eb;--ok:#12a36d;--bad:#e5484d;--warn:#f59e0b;--sh:0 1px 2px rgba(20,30,70,.05),0 8px 24px rgba(20,30,70,.07);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
@@ -376,7 +377,7 @@ var DT=[["Bosh","Главная","Home"],["Xizmatlar","Услуги","Services"]
 ["Bildirishnomalar","Уведомления","Notifications"],["Yangiliklar va amallar","Новости и операции","News and activity"],["Tungi rejim","Тёмный режим","Dark mode"],["Ko'zga qulay","Комфортно для глаз","Easy on the eyes"],
 ["Tugma ovozi","Звук кнопок","Button sound"],["Bosganda ovoz chiqadi","Звук при нажатии","Plays a sound on tap"],["Yordam","Помощь","Help"],["Admin bilan bog'lanish","Связаться с админом","Contact admin"],
 ["Balansni to'ldirish","Пополнение баланса","Top up balance"],["Tasdiqlash","Подтвердить","Confirm"],["Buyurtma qabul qilindi","Заказ принят","Order received"],["To'lov so'rovi yuborildi","Запрос на оплату отправлен","Payment request sent"],
-["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
+["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Tez orada","Скоро","Coming soon"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
 var TR={};DT.forEach(function(x){TR[x[0]]={ru:x[1],en:x[2]}});
 var LN={Bronza:{ru:"Бронза",en:"Bronze"},Silver:{ru:"Серебро",en:"Silver"},Gold:{ru:"Золото",en:"Gold"},Platinum:{ru:"Платина",en:"Platinum"}};
 var PH={uz:"Summa, so'm",ru:"Сумма, сум",en:"Amount, UZS"},LGN={uz:"O'zbekcha",ru:"Русский",en:"English"},LG="uz",LGS=null;
@@ -418,6 +419,9 @@ SVB[0].onclick=function(){goShop("s")};
 SVB[1].onclick=function(){goShop("p")};
 SVB[2].onclick=function(){$(".nav button[data-t=ref]").click()};
 SVB[3].onclick=function(){sh(true)};
+var BA=$$(".ba button");
+BA[1].onclick=function(){toast("Tez orada")};
+BA[2].onclick=function(){toast("Tez orada")};
 </script>
 </body>
 </html>
