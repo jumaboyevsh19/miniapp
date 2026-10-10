@@ -144,7 +144,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 
  <section class="page on" id="home">
   <div class="bal">
-   <div class="br"><span>Umumiy balans</span><button id="eye"><svg class="i"><use href="#eye"/></svg></button></div>
+   <div class="br"><span>Umumiy balans</span><button id="eyeb"><svg class="i"><use href="#eye"/></svg></button></div>
    <h1 id="bv">128 500 so'm</h1>
    <span class="chg"><svg class="i"><use href="#trend"/></svg>+12.4% bu hafta</span>
    <div class="bn"><span>ID 1234 5678 9012</span><div class="chip"></div></div>
@@ -244,9 +244,9 @@ var $=function(s){return document.querySelector(s)},$$=function(s){return docume
 function on(list,b){list.forEach(function(o){o.classList.remove("on")});b.classList.add("on")}
 function toast(t){$("#tt").textContent=t;$("#ts").classList.add("on");setTimeout(function(){$("#ts").classList.remove("on")},2000)}
 // nav
-$$(".nav button").forEach(function(b){b.onclick=function(){on($$(".nav button"),b);on($$(".page"),$("#"+b.dataset.t));window.scrollTo(0,0)}});
+$$(".nav button").forEach(function(b){b.onclick=function(){on($$(".nav button"),b);on($$(".page"),$("section#"+b.dataset.t));window.scrollTo(0,0)}});
 // balance hide
-var hid=false;$("#eye").onclick=function(){hid=!hid;$("#bv").textContent=hid?"•••••• so'm":"128 500 so'm"};
+var hid=false;$("#eyeb").onclick=function(){hid=!hid;$("#bv").textContent=hid?"•••••• so'm":"128 500 so'm"};
 // chart
 var CD=[[[20,34,28,52,44,70,62],[14,22,30,24,40,34,46]],[[30,42,38,60,52,74,66,88,80,96],[20,30,26,40,34,48,42,56,50,60]],[[40,52,60,56,72,68,90,84,100,94,110,120],[26,34,30,44,40,52,48,60,56,66,62,70]]];
 function path(a){var W=320,H=150,m=Math.max.apply(null,a)*1.15,p=a.map(function(v,i){return[i*W/(a.length-1),H-8-(v/m)*(H-20)]}),d="M"+p[0][0]+" "+p[0][1];
