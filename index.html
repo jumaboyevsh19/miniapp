@@ -6,10 +6,10 @@
 <title>Bot Mini App</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-:root{--bg:#f3f5fa;--card:#fff;--text:#0f1320;--sub:#737a90;--line:#e7eaf3;--acc:#4f6bff;--acc2:#8b5cf6;--ok:#12a36d;--bad:#e5484d;--warn:#f59e0b;--sh:0 1px 2px rgba(20,30,70,.05),0 8px 24px rgba(20,30,70,.07);
+:root{--bg:#f3f5fa;--card:#fff;--text:#0f1320;--sub:#737a90;--line:#e7eaf3;--acc:#0e9f8e;--acc2:#2563eb;--ok:#12a36d;--bad:#e5484d;--warn:#f59e0b;--sh:0 1px 2px rgba(20,30,70,.05),0 8px 24px rgba(20,30,70,.07);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#090b11;--card:#141823;--text:#eef0f7;--sub:#8890a6;--line:#232838;--sh:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}}
-:root[data-theme="dark"]{--bg:#090b11;--card:#141823;--text:#eef0f7;--sub:#8890a6;--line:#232838;--sh:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0f16;--card:#111a24;--text:#eef2f6;--sub:#8794a3;--line:#1f2b38;--sh:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#0a0f16;--card:#111a24;--text:#eef2f6;--sub:#8794a3;--line:#1f2b38;--sh:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35)}
 *{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
 html,body{background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 button{font-family:inherit;cursor:pointer}
@@ -25,7 +25,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .ib i{position:absolute;top:10px;right:11px;width:8px;height:8px;border-radius:50%;background:var(--bad);border:2px solid var(--card)}
 .page{display:none;animation:f .25s ease}.page.on{display:block}
 @keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.bal{position:relative;overflow:hidden;border-radius:26px;padding:20px;color:#fff;background:linear-gradient(135deg,#1c2350,#3a2d8f 55%,#6d4bd8);box-shadow:0 16px 36px rgba(60,50,160,.38);margin-bottom:14px}
+.bal{position:relative;overflow:hidden;border-radius:26px;padding:20px;color:#fff;background:linear-gradient(135deg,#0a1f33,#0f3a55 55%,#0e7490);box-shadow:0 16px 36px rgba(10,60,90,.38);margin-bottom:14px}
 .bal:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 0,rgba(255,255,255,.22),transparent 55%),repeating-linear-gradient(115deg,rgba(255,255,255,.04) 0 1px,transparent 1px 14px)}
 .bal>*{position:relative}
 .br{display:flex;justify-content:space-between;align-items:center;font-size:13px;opacity:.85}
@@ -37,7 +37,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .chip{width:34px;height:25px;border-radius:6px;background:linear-gradient(135deg,#f6d77a,#c9a23a)}
 .ba{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .ba button{display:flex;flex-direction:column;align-items:center;gap:5px;border:0;border-radius:16px;padding:11px 4px;font-size:12px;font-weight:600;background:rgba(255,255,255,.14);color:#fff;backdrop-filter:blur(8px)}
-.ba button:first-child{background:#fff;color:#3a2d8f}
+.ba button:first-child{background:#fff;color:#0f3a55}
 .cd{background:var(--card);border-radius:22px;padding:16px;box-shadow:var(--sh);border:1px solid var(--line);margin-bottom:14px}
 .ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .ch h2{font-size:15px}.ch small{color:var(--sub);font-size:12px}
@@ -70,14 +70,14 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .seg button.on{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
 .pk{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .pc{position:relative;background:var(--card);border-radius:20px;padding:16px;box-shadow:var(--sh);border:1.5px solid var(--line);text-align:left;color:var(--text)}
-.pc.sel{border-color:var(--acc);background:linear-gradient(180deg,rgba(79,107,255,.08),transparent)}
+.pc.sel{border-color:var(--acc);background:linear-gradient(180deg,rgba(14,159,142,.1),transparent)}
 .pc .ic{margin-bottom:10px}.pc b{font-size:16px;display:block}.pc small{color:var(--sub);font-size:12px}
 .pc em{display:block;font-style:normal;font-weight:700;margin-top:8px;color:var(--acc)}
 .tag{position:absolute;top:12px;right:12px;font-size:10.5px;font-weight:700;background:rgba(16,185,129,.14);color:#10b981;padding:3px 8px;border-radius:10px}
 .sum{margin-top:14px}
 .sum .row{padding:11px 0;border:0}.sum .row:not(:last-child){border-bottom:1px dashed var(--line)}
 .sum .row b{font-size:13.5px;font-weight:600;color:var(--sub)}.sum .row span{font-weight:700}
-.cta{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:15px;font-size:15px;font-weight:700;color:#fff;margin-top:12px;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 10px 22px rgba(90,90,255,.32)}
+.cta{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:15px;font-size:15px;font-weight:700;color:#fff;margin-top:12px;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 10px 22px rgba(14,159,142,.32)}
 .hero{text-align:center;padding:20px}
 .hero h1{font-size:30px;letter-spacing:-.8px;margin:6px 0}.hero small{color:var(--sub)}
 .gs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
@@ -109,6 +109,21 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translate(-50%,-90px);background:var(--text);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:13.5px;font-weight:600;z-index:30;transition:.3s;display:flex;gap:8px;align-items:center}
 .toast.on{transform:translate(-50%,0)}
 .cd:has(#chart){display:none}
+.pk{grid-template-columns:1fr;gap:16px;margin-top:6px}
+.pc{display:grid;grid-template-columns:42px 1fr auto;column-gap:12px;align-items:center;padding:12px 14px}
+.pc .ic{grid-row:1/3;margin:0}.pc b{grid-column:2;font-size:15px}.pc small{grid-column:2}
+.pc em{grid-column:3;grid-row:1/3;margin:0;font-size:15px;white-space:nowrap}
+.tag{top:-9px;right:14px;padding:2px 9px}
+#shop{padding-bottom:84px}
+.bar{position:fixed;left:16px;right:16px;max-width:448px;margin:0 auto;bottom:calc(88px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:10px 10px 10px 16px;box-shadow:0 12px 30px rgba(10,40,60,.22);z-index:4}
+.bar>div{flex:1}.bar small{display:block;color:var(--sub);font-size:11.5px}.bar b{font-size:17px}
+.bar .cta{width:auto;margin:0;padding:13px 20px}
+.promo{display:flex;align-items:center;gap:12px;border-radius:20px;padding:14px;margin-bottom:14px;color:#fff;background:linear-gradient(135deg,#0f3a55,#0e7490);cursor:pointer}
+.promo .pi{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.18);display:grid;place-items:center}
+.promo>div:nth-child(2){flex:1}.promo b{display:block;font-size:14.5px}.promo small{font-size:12px;opacity:.85}
+.sec2{font-size:12px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.8px;margin:18px 4px 8px}
+.lgb{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:14px;padding:14px;margin-top:8px;background:none;width:100%;color:var(--text);text-align:left}
+.lgb.on{border-color:var(--acc)}.lgb b{flex:1;font-size:15px}.lgb.on .rd{border:5px solid var(--acc)}
 .rs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
 .rs div{background:rgba(255,255,255,.16);border-radius:16px;padding:11px 6px;text-align:center}
 .rs b{display:block;font-size:17px}.rs small{font-size:11px;opacity:.85}
@@ -184,6 +199,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
    <button><span class="b"><svg class="i"><use href="#card"/></svg></span>Karta</button>
   </div>
 
+  <div class="promo" id="pgo"><div class="pi"><svg class="i"><use href="#gift"/></svg></div><div><b>Do'st taklif qiling</b><small>Har bir do'st uchun 150 so'm bonus</small></div><svg class="i"><use href="#go"/></svg></div>
   <div class="cd">
    <div class="ch"><div><h2 id="lvn">Bronza darajasi</h2><small id="lvs"></small></div><b id="lvp" style="color:var(--acc)">0%</b></div>
    <div class="pr"><i id="lvb" style="width:0%"></i></div>
@@ -198,12 +214,8 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
  <section class="page" id="shop">
   <div class="seg" id="sg"><button class="on" data-k="s">Stars</button><button data-k="p">Premium</button></div>
   <div class="pk" id="pk"></div>
-  <div class="cd sum">
-   <div class="row"><b>Tanlangan</b><span id="s1">100 Stars</span></div>
-   <div class="row"><b>Chegirma</b><span id="s2" style="color:var(--ok)">0 so'm</span></div>
-   <div class="row"><b>Jami</b><span id="s3" style="font-size:17px">17 000 so'm</span></div>
-  </div>
-  <button class="cta" id="buy"><svg class="i"><use href="#bolt"/></svg>Sotib olish</button>
+  <span id="s2" style="display:none"></span>
+  <div class="bar"><div><small id="s1"></small><b id="s3"></b></div><button class="cta" id="buy"><svg class="i"><use href="#bolt"/></svg>Sotib olish</button></div>
  </section>
 
  <section class="page" id="ref">
@@ -240,14 +252,15 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
     <div class="idc"><span class="ic p"><svg class="i"><use href="#shield"/></svg></span><div><small>Telegram ID</small><b id="pid">-</b></div><button class="cpb" id="cpid"><svg class="i"><use href="#copy"/></svg></button></div>
    </div>
   </div>
-  <div class="list">
-   <div class="row"><div class="ic b"><svg class="i"><use href="#globe"/></svg></div><div class="m"><b>Til</b><small>O'zbekcha</small></div><svg class="i"><use href="#go"/></svg></div>
+  <div class="sec2">Hisob</div><div class="list">
+   <div class="row" id="lrow" style="cursor:pointer"><div class="ic b"><svg class="i"><use href="#globe"/></svg></div><div class="m"><b>Til</b><small id="lcur">O'zbekcha</small></div><svg class="i"><use href="#go"/></svg></div>
    <div class="row"><div class="ic g"><svg class="i"><use href="#shield"/></svg></div><div class="m"><b>Xavfsizlik</b><small>Himoya yoqilgan</small></div><svg class="i"><use href="#go"/></svg></div>
-   <div class="row"><div class="ic o"><svg class="i"><use href="#bell"/></svg></div><div class="m"><b>Bildirishnomalar</b><small>Yangiliklar va amallar</small></div><button class="sw on" data-sw></button></div>
+   </div><div class="sec2">Sozlamalar</div><div class="list"><div class="row"><div class="ic o"><svg class="i"><use href="#bell"/></svg></div><div class="m"><b>Bildirishnomalar</b><small>Yangiliklar va amallar</small></div><button class="sw on" data-sw></button></div>
    <div class="row"><div class="ic p"><svg class="i"><use href="#bolt"/></svg></div><div class="m"><b>Tungi rejim</b><small>Ko'zga qulay</small></div><button class="sw" id="dk"></button></div>
    <div class="row"><div class="ic o"><svg class="i"><use href="#bell"/></svg></div><div class="m"><b>Tugma ovozi</b><small>Bosganda ovoz chiqadi</small></div><button class="sw on" id="snd"></button></div>
-   <div class="row"><div class="ic b"><svg class="i"><use href="#help"/></svg></div><div class="m"><b>Yordam</b><small>Admin bilan bog'lanish</small></div><svg class="i"><use href="#go"/></svg></div>
+   </div><div class="sec2">Qo'llab-quvvatlash</div><div class="list"><div class="row" id="hrow" style="cursor:pointer"><div class="ic b"><svg class="i"><use href="#help"/></svg></div><div class="m"><b>Yordam</b><small>Admin bilan bog'lanish</small></div><svg class="i"><use href="#go"/></svg></div>
   </div>
+  <div style="text-align:center;color:var(--sub);font-size:12px;margin-top:16px">Versiya 7</div>
  </section>
 </div>
 
@@ -267,6 +280,11 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
  <button class="mt"><svg class="i"><use href="#bolt"/></svg><b>Payme</b><span class="rd"></span></button>
  <button class="mt"><svg class="i"><use href="#bolt"/></svg><b>Click</b><span class="rd"></span></button>
  <button class="cta" id="go2"><svg class="i"><use href="#check"/></svg>Tasdiqlash</button>
+</div>
+<div class="sh" id="lsh"><div class="grab"></div><h3>Til</h3>
+ <button class="lgb" data-lg="uz"><b>O'zbekcha</b><span class="rd"></span></button>
+ <button class="lgb" data-lg="ru"><b>Русский</b><span class="rd"></span></button>
+ <button class="lgb" data-lg="en"><b>English</b><span class="rd"></span></button>
 </div>
 <div class="toast" id="ts"><svg class="i"><use href="#check"/></svg><span id="tt"></span></div>
 
@@ -289,8 +307,8 @@ function path(a){var W=320,H=150,m=Math.max.apply(null,a)*1.15,p=a.map(function(
 for(var i=1;i<p.length;i++){var x=(p[i-1][0]+p[i][0])/2;d+=" C"+x+" "+p[i-1][1]+" "+x+" "+p[i][1]+" "+p[i][0]+" "+p[i][1]}return{d:d,l:p[p.length-1]}}
 function chart(k){var a=path(CD[k][0]),b=path(CD[k][1]),g="";
 for(var i=1;i<4;i++)g+='<line x1="0" x2="320" y1="'+i*36+'" y2="'+i*36+'" stroke="var(--line)" stroke-dasharray="3 5"/>';
-$("#chart").innerHTML='<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f6bff" stop-opacity=".3"/><stop offset="1" stop-color="#4f6bff" stop-opacity="0"/></linearGradient></defs>'+g+
-'<path d="'+a.d+' L320 150 L0 150Z" fill="url(#ga)"/><path d="'+b.d+'" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" opacity=".8"/><path d="'+a.d+'" fill="none" stroke="#4f6bff" stroke-width="2.6" stroke-linecap="round"/><circle cx="'+(a.l[0]-4)+'" cy="'+a.l[1]+'" r="5" fill="var(--card)" stroke="#4f6bff" stroke-width="2.5"/>'}
+$("#chart").innerHTML='<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e9f8e" stop-opacity=".3"/><stop offset="1" stop-color="#0e9f8e" stop-opacity="0"/></linearGradient></defs>'+g+
+'<path d="'+a.d+' L320 150 L0 150Z" fill="url(#ga)"/><path d="'+b.d+'" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" opacity=".8"/><path d="'+a.d+'" fill="none" stroke="#0e9f8e" stroke-width="2.6" stroke-linecap="round"/><circle cx="'+(a.l[0]-4)+'" cy="'+a.l[1]+'" r="5" fill="var(--card)" stroke="#0e9f8e" stroke-width="2.5"/>'}
 chart(0);$$("#pt button").forEach(function(b){b.onclick=function(){on($$("#pt button"),b);chart(+b.dataset.d)}});
 // tx
 function dt(ms){var d=new Date(ms),p=function(n){return(n<10?"0":"")+n};return p(d.getDate())+"."+p(d.getMonth()+1)+", "+p(d.getHours())+":"+p(d.getMinutes())}
@@ -347,6 +365,57 @@ document.addEventListener("click",function(e){var b=e.target.closest("button");i
 $("#snd").onclick=function(){SND=!SND;this.classList.toggle("on",SND);try{localStorage.setItem("snd",SND?"1":"0")}catch(e){}};
 $("#rlv").textContent=LV[li][0];
 $("#shr").onclick=function(){var u="https://t.me/share/url?url="+encodeURIComponent(RL)+"&text="+encodeURIComponent("Botga qo'shiling va bonus oling!");try{TG.openTelegramLink(u)}catch(e){window.open(u,"_blank")}};
+
+var D=[["Bosh","Главная","Home"],["Xizmatlar","Услуги","Services"],["Takliflar","Приглашения","Referrals"],["Profil","Профиль","Profile"],
+["Umumiy balans","Общий баланс","Total balance"],["To'ldirish","Пополнить","Top up"],["Yechish","Вывести","Withdraw"],["O'tkazma","Перевод","Transfer"],
+["Taklif","Приглашения","Invite"],["Karta","Карта","Card"],["Amallar tarixi","История операций","Transactions"],["Hammasi","Все","All"],["Kirim","Приход","Income"],["Chiqim","Расход","Expense"],
+["Hozircha amallar yo'q","Операций пока нет","No transactions yet"],["Taklif bonusi","Бонус за приглашение","Referral bonus"],["Stars xaridi","Покупка Stars","Stars purchase"],["Balans to'ldirildi","Баланс пополнен","Balance topped up"],
+["Eng yuqori daraja","Максимальный уровень","Top level"],["Tezkor yetkazish","Быстрая доставка","Fast delivery"],["Akkauntga kirib olinadi","Через вход в аккаунт","Via account login"],
+["Ommabop","Популярно","Popular"],["Tejamkor","Выгодно","Best value"],["Tanlangan","Выбрано","Selected"],["Chegirma","Скидка","Discount"],["Jami","Итого","Total"],["Sotib olish","Купить","Buy"],
+["Takliflardan daromad","Доход от приглашений","Referral earnings"],["Do'stlar","Друзья","Friends"],["Har bir taklif","За приглашение","Per invite"],["Daraja","Уровень","Level"],
+["Sizning havolangiz","Ваша ссылка","Your link"],["Do'stlaringizga yuboring","Отправьте друзьям","Share with friends"],["Nusxa","Копия","Copy"],["Do'stlarga yuborish","Отправить друзьям","Send to friends"],
+["Qanday ishlaydi","Как это работает","How it works"],["Havolani yuboring","Отправьте ссылку","Send the link"],["Do'stingizga shaxsiy havolangizni jo'nating","Отправьте другу свою личную ссылку","Send your personal link to a friend"],
+["Do'st botga kiradi","Друг заходит в бота","Friend joins the bot"],["U havola orqali botni ishga tushiradi","Он запускает бота по вашей ссылке","They start the bot via your link"],["Siz bonus olasiz","Вы получаете бонус","You get a bonus"],
+["Har bir yangi do'st uchun 150 so'm","150 сум за каждого нового друга","150 UZS for every new friend"],["Takliflar tarixi","История приглашений","Referral history"],["Hozircha takliflar yo'q","Приглашений пока нет","No referrals yet"],["Yangi do'st","Новый друг","New friend"],
+["Foydalanuvchi","Пользователь","User"],["Foydalanuvchi nomi","Имя пользователя","Username"],["Belgilanmagan","Не указано","Not set"],["Til","Язык","Language"],["Xavfsizlik","Безопасность","Security"],["Himoya yoqilgan","Защита включена","Protection on"],
+["Bildirishnomalar","Уведомления","Notifications"],["Yangiliklar va amallar","Новости и операции","News and activity"],["Tungi rejim","Тёмный режим","Dark mode"],["Ko'zga qulay","Комфортно для глаз","Easy on the eyes"],
+["Tugma ovozi","Звук кнопок","Button sound"],["Bosganda ovoz chiqadi","Звук при нажатии","Plays a sound on tap"],["Yordam","Помощь","Help"],["Admin bilan bog'lanish","Связаться с админом","Contact admin"],
+["Balansni to'ldirish","Пополнение баланса","Top up balance"],["Tasdiqlash","Подтвердить","Confirm"],["Buyurtma qabul qilindi","Заказ принят","Order received"],["To'lov so'rovi yuborildi","Запрос на оплату отправлен","Payment request sent"],
+["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
+var TR={};D.forEach(function(x){TR[x[0]]={ru:x[1],en:x[2]}});
+var LN={Bronza:{ru:"Бронза",en:"Bronze"},Silver:{ru:"Серебро",en:"Silver"},Gold:{ru:"Золото",en:"Gold"},Platinum:{ru:"Платина",en:"Platinum"}};
+var PH={uz:"Summa, so'm",ru:"Сумма, сум",en:"Amount, UZS"},LGN={uz:"O'zbekcha",ru:"Русский",en:"English"},LG="uz",LGS=null;
+try{LGS=localStorage.getItem("lg")}catch(e){}
+LG=LGS&&LGN[LGS]?LGS:(U.language_code=="ru"?"ru":U.language_code=="en"?"en":"uz");
+function ln(n){return LG=="uz"?n:LN[n][LG]}
+function mo(n){n=+n;return LG=="ru"?n+" "+(n==1?"месяц":n<5?"месяца":"месяцев"):n+(n==1?" month":" months")}
+var LV2="(Bronza|Silver|Gold|Platinum)";
+var RX=[
+[new RegExp("^"+LV2+" darajasi$"),function(m){return LG=="ru"?"Уровень «"+ln(m[1])+"»":ln(m[1])+" level"}],
+[new RegExp("^"+LV2+"'gacha (\\d+) ta taklif$"),function(m){return LG=="ru"?"До «"+ln(m[1])+"»: ещё "+m[2]:m[2]+" more to "+ln(m[1])}],
+[new RegExp("^"+LV2+"$"),function(m){return ln(m[1])}],
+[/^(\d+) (?:ta )?taklif$/,function(m){return (LG=="ru"?"Приглашений: ":"Invites: ")+m[1]}],
+[/^(\d+) oylik Premium$/,function(m){return "Premium, "+mo(m[1])}],
+[/^(\d+) oylik$/,function(m){return mo(m[1])}],
+[/^(.+) so'm$/,function(m){return m[1]+(LG=="ru"?" сум":" UZS")}]];
+function tt(t){var d=TR[t];if(d)return d[LG];for(var i=0;i<RX.length;i++){var m=t.match(RX[i][0]);if(m)return RX[i][1](m)}return null}
+function trNode(n){var p=n.parentNode;if(!p||/^(SCRIPT|STYLE)$/.test(p.nodeName))return;
+ if(n._o===undefined)n._o=n.nodeValue;var o=n._o,t=o.trim(),v=o;
+ if(LG!="uz"&&t){var r=tt(t);if(r)v=o.replace(t,r)}
+ if(n.nodeValue!==v)n.nodeValue=v}
+function walk(r){if(r.nodeType==3){trNode(r);return}var w=document.createTreeWalker(r,4),n,a=[];while(n=w.nextNode())a.push(n);a.forEach(trNode)}
+function lsh(v){$("#ov").classList.toggle("on",v);$("#lsh").classList.toggle("on",v)}
+function setLg(l){LG=l;try{localStorage.setItem("lg",l)}catch(e){}
+ document.documentElement.lang=l;
+ $$(".lgb").forEach(function(b){b.classList.toggle("on",b.dataset.lg==l)});
+ $("#lcur").textContent=LGN[l];$("#amt").placeholder=PH[l];walk(document.body)}
+$("#lrow").onclick=function(){lsh(true)};
+$("#ov").addEventListener("click",function(){lsh(false)});
+$$(".lgb").forEach(function(b){b.onclick=function(){setLg(b.dataset.lg);lsh(false)}});
+new MutationObserver(function(ms){ms.forEach(function(m){if(m.type=="characterData")trNode(m.target);m.addedNodes.forEach(walk)})}).observe(document.body,{childList:true,subtree:true,characterData:true});
+setLg(LG);
+$("#hrow").onclick=function(){var u="https://t.me/Akhmedov_Shoxruz";try{TG.openTelegramLink(u)}catch(e){window.open(u,"_blank")}};
+$("#pgo").onclick=function(){$(".nav button[data-t=ref]").click()};
 </script>
 </body>
 </html>
