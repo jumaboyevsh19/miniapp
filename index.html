@@ -137,6 +137,45 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .pok .ic{margin:0 auto 12px;width:64px;height:64px;border-radius:50%}
 .pok .ic svg{width:30px;height:30px}
 .pok h3{margin-bottom:6px}
+#psh{max-height:92vh;overflow-y:auto}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.ph h3{margin:0}.ph small{color:var(--sub);font-size:12px}
+.ptimer{position:relative;width:52px;height:52px;flex:none}
+.ptimer svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ptimer circle{fill:none;stroke-width:3}
+.ptimer .tr{stroke:var(--line)}
+.ptimer .tp{stroke:var(--acc);stroke-linecap:round;stroke-dasharray:97.4;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear,stroke .3s}
+.ptimer b{position:absolute;inset:0;display:grid;place-items:center;font-size:11.5px;font-variant-numeric:tabular-nums}
+.pamt2{border-radius:22px;padding:16px;text-align:center;color:#fff;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 12px 26px rgba(14,159,142,.3)}
+.pamt2 small{opacity:.85;font-size:12px}
+.pamv{font-size:34px;font-weight:800;letter-spacing:-.8px;margin:4px 0 10px;font-variant-numeric:tabular-nums}
+.pamv em{font-style:normal;font-size:16px;font-weight:700;opacity:.85;margin-left:6px;letter-spacing:0}
+.pcopy{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:12px;padding:8px 14px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(255,255,255,.2)}
+.pcard{position:relative;overflow:hidden;margin-top:10px;border-radius:22px;padding:16px;color:#fff;background:linear-gradient(135deg,#0a1f33,#0f3a55 55%,#0e7490);box-shadow:0 12px 26px rgba(10,60,90,.3)}
+.pcard:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0,rgba(255,255,255,.2),transparent 55%)}
+.pcard>*{position:relative}
+.pcnum{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:19px;letter-spacing:1.5px;margin:14px 0}
+.pcb{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.pcb small{display:block;font-size:10.5px;opacity:.7;margin-bottom:2px}
+.pcb b{font-size:14px}
+.pstat{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-size:13px;color:var(--sub)}
+.pdot{width:9px;height:9px;border-radius:50%;background:var(--ok);animation:pdp 1.3s ease-in-out infinite}
+@keyframes pdp{0%,100%{box-shadow:0 0 0 0 rgba(18,163,109,.5)}50%{box-shadow:0 0 0 7px rgba(18,163,109,0)}}
+.psu{position:relative;text-align:center;padding:14px 0 10px}
+.psu h3{margin:14px 0 4px;font-size:20px}
+.pck{width:84px;height:84px;display:block;margin:0 auto;animation:ppop .5s cubic-bezier(.2,1.4,.4,1) both}
+.pck circle{fill:rgba(16,185,129,.14);stroke:#10b981;stroke-width:2.5;stroke-dasharray:151;stroke-dashoffset:151;animation:pdr .6s ease forwards}
+.pck path{fill:none;stroke:#10b981;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:pdr .4s ease .45s forwards}
+@keyframes pdr{to{stroke-dashoffset:0}}
+@keyframes ppop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.psam{font-size:36px;font-weight:800;color:var(--ok);letter-spacing:-.8px;font-variant-numeric:tabular-nums}
+.psb{display:inline-block;margin-top:10px;font-size:13px;color:var(--sub);background:var(--bg);padding:7px 14px;border-radius:20px}
+.psb b{color:var(--text)}
+.pxi{width:72px;height:72px;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:rgba(245,158,11,.14);color:#f59e0b;animation:ppop .4s ease both}
+.pxi svg{width:34px;height:34px}
+.conf{position:absolute;left:0;right:0;top:0;height:0;pointer-events:none}
+.conf i{position:absolute;top:-6px;width:8px;height:12px;border-radius:2px;opacity:0;animation:pfall 2s ease-in forwards}
+@keyframes pfall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(300px) rotate(540deg);opacity:0}}
 </style>
 </head>
 <body>
@@ -446,24 +485,30 @@ function psh(v){$("#ov").classList.toggle("on",v);$("#psh").classList.toggle("on
 function stopPay(){clearInterval(PAYT);clearInterval(PAYP);PAYT=null;PAYP=null}
 function copyTxt(t,m){try{navigator.clipboard.writeText(String(t))}catch(e){}toast(m)}
 function p2(n){return(n<10?"0":"")+n}
-function crow(icon,label,val,raw,cls){
- return '<div class="idc'+(cls?" "+cls:"")+'"><span class="ic b"><svg class="i"><use href="#'+icon+'"/></svg></span><div><small>'+label+'</small><b>'+val+'</b></div><button class="cpb" data-raw="'+raw+'"><svg class="i"><use href="#copy"/></svg></button></div>'}
+function cur(){return LG=="ru"?" сум":LG=="en"?" UZS":" so'm"}
+var CI='<svg class="i" style="width:15px;height:15px"><use href="#copy"/></svg>';
 function showOrder(o){
- ORD=o;stopPay();
- var h='<div class="grab"></div><h3>'+L3("To'lov","Оплата","Payment")+'</h3><div class="idrow" style="margin-top:0">'+
-  crow("card",L3("Karta raqami","Номер карты","Card number"),o.card,String(o.card).replace(/\s/g,""))+
-  (o.owner?'<div class="idc"><span class="ic p"><svg class="i"><use href="#user"/></svg></span><div><small>'+L3("Karta egasi","Владелец карты","Card holder")+'</small><b>'+o.owner+'</b></div></div>':"")+
-  crow("bolt",L3("O'tkazish summasi","Сумма перевода","Amount to send"),fm(o.pay)+(LG=="ru"?" сум":LG=="en"?" UZS":" so'm"),String(o.pay),"pamt")+
-  '</div><div class="pw">'+L3("Aynan shu summani o'tkazing, bir so'm ham farq qilmasin. Aks holda to'lov aniqlanmaydi.","Переведите именно эту сумму, ни на сум больше или меньше. Иначе платёж не определится.","Send exactly this amount, not a single sum more or less. Otherwise the payment will not be detected.")+'</div>'+
-  '<div class="pl2" style="margin-top:12px"><span id="pst">'+L3("To'lov kutilmoqda...","Ожидаем платёж...","Waiting for payment...")+'</span><b id="ptm"></b></div>'+
-  '<div class="pl2" style="margin-top:4px"><span>'+L3("Balansga qo'shiladi","Будет зачислено","Will be credited")+'</span><b>'+fm(o.base)+(LG=="ru"?" сум":LG=="en"?" UZS":" so'm")+'</b></div>'+
+ ORD=o;ORD.total=Math.max(1000,o.expires-Date.now());stopPay();
+ var card=String(o.card).replace(/\s/g,"");
+ $("#psh").innerHTML='<div class="grab"></div>'+
+  '<div class="ph"><div><h3>'+L3("To'lov","Оплата","Payment")+'</h3><small>'+L3("Pulni quyidagi kartaga o'tkazing","Переведите деньги на карту ниже","Send money to the card below")+'</small></div>'+
+  '<div class="ptimer"><svg viewBox="0 0 36 36"><circle class="tr" cx="18" cy="18" r="15.5"/><circle class="tp" id="pring" cx="18" cy="18" r="15.5"/></svg><b id="ptm"></b></div></div>'+
+  '<div class="pamt2"><small>'+L3("O'tkazish summasi","Сумма перевода","Amount to send")+'</small><div class="pamv">'+fm(o.pay)+'<em>'+cur().trim()+'</em></div><button class="pcopy" data-raw="'+o.pay+'">'+CI+L3("Summani nusxalash","Скопировать сумму","Copy amount")+'</button></div>'+
+  '<div class="pcard"><div class="chip"></div><div class="pcnum">'+o.card+'</div><div class="pcb"><div><small>'+L3("Karta egasi","Владелец карты","Card holder")+'</small><b>'+(o.owner||"")+'</b></div><button class="pcopy" data-raw="'+card+'">'+CI+L3("Nusxa","Копия","Copy")+'</button></div></div>'+
+  '<div class="pw">'+L3("Aynan shu summani o'tkazing, bir so'm ham farq qilmasin. Aks holda to'lov aniqlanmaydi.","Переведите именно эту сумму, ни на сум больше или меньше. Иначе платёж не определится.","Send exactly this amount, not a single sum more or less. Otherwise the payment will not be detected.")+'</div>'+
+  '<div class="pl2" style="margin-top:12px"><span>'+L3("Balansga qo'shiladi","Будет зачислено","Will be credited")+'</span><b style="color:var(--text)">'+fm(o.base)+cur()+'</b></div>'+
+  '<div class="pstat"><i class="pdot"></i><span>'+L3("To'lov kutilmoqda...","Ожидаем платёж...","Waiting for payment...")+'</span></div>'+
   '<button class="cta pbtn2" id="pcancel">'+L3("Bekor qilish","Отмена","Cancel")+'</button>';
- $("#psh").innerHTML=h;
- $$("#psh .cpb").forEach(function(b){b.onclick=function(){copyTxt(b.dataset.raw,L3("Nusxalandi","Скопировано","Copied"))}});
- $("#pcancel").onclick=function(){stopPay();post("/api/cancel").catch(function(){});psh(false)};
+ $$("#psh .pcopy").forEach(function(b){b.onclick=function(){copyTxt(b.dataset.raw,L3("Nusxalandi","Скопировано","Copied"))}});
+ $("#pcancel").onclick=function(){stopPay();ORD=null;post("/api/cancel").catch(function(){});psh(false)};
  tick();PAYT=setInterval(tick,1000);PAYP=setInterval(poll,4000);
  psh(true)}
-function tick(){if(!ORD||!$("#ptm"))return;var s=Math.max(0,Math.floor((ORD.expires-Date.now())/1000));$("#ptm").textContent=p2(Math.floor(s/60))+":"+p2(s%60);if(s<=0)$("#ptm").style.color="var(--bad)"}
+function tick(){
+ if(!ORD||!$("#ptm"))return;
+ var s=Math.max(0,Math.ceil((ORD.expires-Date.now())/1000));
+ $("#ptm").textContent=p2(Math.floor(s/60))+":"+p2(s%60);
+ var f=Math.min(1,s*1000/ORD.total),r=$("#pring");
+ r.style.strokeDashoffset=97.4*(1-f);r.style.stroke=s<60?"var(--bad)":""}
 function poll(){
  if(!ORD)return;
  post("/api/status",{pay:ORD.pay}).then(function(r){
@@ -472,16 +517,31 @@ function poll(){
   else if(r.status=="expired")expired()
  }).catch(function(){})}
 function expired(){
- stopPay();
- $("#psh").innerHTML='<div class="grab"></div><div class="pok"><h3>'+L3("Vaqt tugadi","Время истекло","Time expired")+'</h3><p class="pw">'+L3("To'lov topilmadi. Agar pul o'tkazgan bo'lsangiz, admin bilan bog'laning.","Платёж не найден. Если вы уже перевели деньги, свяжитесь с админом.","Payment not found. If you already sent the money, contact the admin.")+'</p></div><button class="cta" id="pagain">'+L3("Qayta urinish","Повторить","Try again")+'</button>';
- $("#pagain").onclick=function(){psh(false);sh(true)}}
+ stopPay();ORD=null;
+ $("#psh").innerHTML='<div class="grab"></div><div class="psu"><div class="pxi"><svg class="i"><use href="#help"/></svg></div><h3>'+L3("Vaqt tugadi","Время истекло","Time expired")+'</h3><p class="pw">'+L3("To'lov topilmadi. Agar pul o'tkazgan bo'lsangiz, admin bilan bog'laning.","Платёж не найден. Если вы уже перевели деньги, свяжитесь с админом.","Payment not found. If you already sent the money, contact the admin.")+'</p></div>'+
+  '<button class="cta" id="pagain">'+L3("Qayta urinish","Повторить","Try again")+'</button><button class="cta pbtn2" id="pclose2">'+L3("Yopish","Закрыть","Close")+'</button>';
+ $("#pagain").onclick=function(){psh(false);sh(true)};
+ $("#pclose2").onclick=function(){psh(false)}}
 function paid(bal){
  var base=ORD.base;stopPay();ORD=null;
  BAL=Number(bal);if(!hid)$("#bv").textContent=fm(BAL)+" so'm";
  T.unshift(["Balans to'ldirildi",dt(Date.now()),"+"+fm(base),"i","in","g"]);tx("a");
  try{TG.HapticFeedback.notificationOccurred("success")}catch(e){}
- $("#psh").innerHTML='<div class="grab"></div><div class="pok"><div class="ic g"><svg class="i"><use href="#check"/></svg></div><h3>'+L3("To'lov qabul qilindi","Платёж принят","Payment received")+'</h3><p class="pw" style="background:none">+'+fm(base)+(LG=="ru"?" сум":LG=="en"?" UZS":" so'm")+'</p></div>';
- setTimeout(function(){psh(false)},2500)}
+ var cf="",cl=["#0e9f8e","#2563eb","#f59e0b","#7c5cff","#10b981"];
+ for(var i=0;i<20;i++)cf+='<i style="left:'+Math.round(Math.random()*100)+'%;background:'+cl[i%5]+';animation-delay:'+(Math.random()*.6).toFixed(2)+'s;animation-duration:'+(1.4+Math.random()*1.2).toFixed(2)+'s"></i>';
+ $("#psh").innerHTML='<div class="grab"></div><div class="conf">'+cf+'</div><div class="psu">'+
+  '<svg class="pck" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg>'+
+  '<h3>'+L3("To'lov qabul qilindi","Платёж принят","Payment received")+'</h3>'+
+  '<div class="psam" id="psam">+0'+cur()+'</div>'+
+  '<div class="psb">'+L3("Joriy balans","Текущий баланс","Current balance")+': <b>'+fm(BAL)+cur()+'</b></div></div>'+
+  '<button class="cta" id="pclose">'+L3("Yopish","Закрыть","Close")+'</button>';
+ var t0=Date.now(),iv=setInterval(function(){
+  var el=$("#psam");if(!el){clearInterval(iv);return}
+  var k=Math.min(1,(Date.now()-t0)/900);
+  el.textContent="+"+fm(Math.round(base*k))+cur();
+  if(k>=1)clearInterval(iv)},30);
+ $("#pclose").onclick=function(){psh(false)};
+ setTimeout(function(){if($("#psam"))psh(false)},9000)}
 $("#ov").addEventListener("click",function(){psh(false)});
 $("#go2").onclick=function(){
  var a=Math.round(+$("#amt").value);
