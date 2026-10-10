@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bot Mini App</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{--bg:#f3f5fa;--card:#fff;--text:#0f1320;--sub:#737a90;--line:#e7eaf3;--acc:#0e9f8e;--acc2:#2563eb;--ok:#12a36d;--bad:#e5484d;--warn:#f59e0b;--sh:0 1px 2px rgba(20,30,70,.05),0 8px 24px rgba(20,30,70,.07);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
@@ -361,7 +360,8 @@ $("#snd").onclick=function(){SND=!SND;this.classList.toggle("on",SND);try{localS
 $("#rlv").textContent=LV[li][0];
 $("#shr").onclick=function(){var u="https://t.me/share/url?url="+encodeURIComponent(RL)+"&text="+encodeURIComponent("Botga qo'shiling va bonus oling!");try{TG.openTelegramLink(u)}catch(e){window.open(u,"_blank")}};
 
-var D=[["Bosh","Главная","Home"],["Xizmatlar","Услуги","Services"],["Takliflar","Приглашения","Referrals"],["Profil","Профиль","Profile"],
+// translations (renamed from D to DT: it used to overwrite the shop data above and break the Xizmatlar tab)
+var DT=[["Bosh","Главная","Home"],["Xizmatlar","Услуги","Services"],["Takliflar","Приглашения","Referrals"],["Profil","Профиль","Profile"],
 ["Umumiy balans","Общий баланс","Total balance"],["To'ldirish","Пополнить","Top up"],["Yechish","Вывести","Withdraw"],["O'tkazma","Перевод","Transfer"],
 ["Taklif","Приглашения","Invite"],["Karta","Карта","Card"],["Amallar tarixi","История операций","Transactions"],["Hammasi","Все","All"],["Kirim","Приход","Income"],["Chiqim","Расход","Expense"],
 ["Hozircha amallar yo'q","Операций пока нет","No transactions yet"],["Taklif bonusi","Бонус за приглашение","Referral bonus"],["Stars xaridi","Покупка Stars","Stars purchase"],["Balans to'ldirildi","Баланс пополнен","Balance topped up"],
@@ -377,7 +377,7 @@ var D=[["Bosh","Главная","Home"],["Xizmatlar","Услуги","Services"],
 ["Tugma ovozi","Звук кнопок","Button sound"],["Bosganda ovoz chiqadi","Звук при нажатии","Plays a sound on tap"],["Yordam","Помощь","Help"],["Admin bilan bog'lanish","Связаться с админом","Contact admin"],
 ["Balansni to'ldirish","Пополнение баланса","Top up balance"],["Tasdiqlash","Подтвердить","Confirm"],["Buyurtma qabul qilindi","Заказ принят","Order received"],["To'lov so'rovi yuborildi","Запрос на оплату отправлен","Payment request sent"],
 ["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
-var TR={};D.forEach(function(x){TR[x[0]]={ru:x[1],en:x[2]}});
+var TR={};DT.forEach(function(x){TR[x[0]]={ru:x[1],en:x[2]}});
 var LN={Bronza:{ru:"Бронза",en:"Bronze"},Silver:{ru:"Серебро",en:"Silver"},Gold:{ru:"Золото",en:"Gold"},Platinum:{ru:"Платина",en:"Platinum"}};
 var PH={uz:"Summa, so'm",ru:"Сумма, сум",en:"Amount, UZS"},LGN={uz:"O'zbekcha",ru:"Русский",en:"English"},LG="uz",LGS=null;
 try{LGS=localStorage.getItem("lg")}catch(e){}
@@ -411,6 +411,13 @@ new MutationObserver(function(ms){ms.forEach(function(m){if(m.type=="characterDa
 setLg(LG);
 $("#hrow").onclick=function(){var u="https://t.me/Akhmedov_Shoxruz";try{TG.openTelegramLink(u)}catch(e){window.open(u,"_blank")}};
 $("#pgo").onclick=function(){$(".nav button[data-t=ref]").click()};
+// bosh sahifadagi tezkor tugmalar
+function goShop(k){K=k;N=1;draw();on($$("#sg button"),$("#sg button[data-k="+k+"]"));$(".nav button[data-t=shop]").click()}
+var SVB=$$(".sv button");
+SVB[0].onclick=function(){goShop("s")};
+SVB[1].onclick=function(){goShop("p")};
+SVB[2].onclick=function(){$(".nav button[data-t=ref]").click()};
+SVB[3].onclick=function(){sh(true)};
 </script>
 </body>
 </html>
