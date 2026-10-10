@@ -109,15 +109,6 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translate(-50%,-90px);background:var(--text);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:13.5px;font-weight:600;z-index:30;transition:.3s;display:flex;gap:8px;align-items:center}
 .toast.on{transform:translate(-50%,0)}
 .cd:has(#chart){display:none}
-.pk{grid-template-columns:1fr;gap:16px;margin-top:6px}
-.pc{display:grid;grid-template-columns:42px 1fr auto;column-gap:12px;align-items:center;padding:12px 14px}
-.pc .ic{grid-row:1/3;margin:0}.pc b{grid-column:2;font-size:15px}.pc small{grid-column:2}
-.pc em{grid-column:3;grid-row:1/3;margin:0;font-size:15px;white-space:nowrap}
-.tag{top:-9px;right:14px;padding:2px 9px}
-#shop{padding-bottom:84px}
-.bar{position:fixed;left:16px;right:16px;max-width:448px;margin:0 auto;bottom:calc(88px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:10px 10px 10px 16px;box-shadow:0 12px 30px rgba(10,40,60,.22);z-index:4}
-.bar>div{flex:1}.bar small{display:block;color:var(--sub);font-size:11.5px}.bar b{font-size:17px}
-.bar .cta{width:auto;margin:0;padding:13px 20px}
 .promo{display:flex;align-items:center;gap:12px;border-radius:20px;padding:14px;margin-bottom:14px;color:#fff;background:linear-gradient(135deg,#0f3a55,#0e7490);cursor:pointer}
 .promo .pi{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.18);display:grid;place-items:center}
 .promo>div:nth-child(2){flex:1}.promo b{display:block;font-size:14.5px}.promo small{font-size:12px;opacity:.85}
@@ -214,8 +205,12 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
  <section class="page" id="shop">
   <div class="seg" id="sg"><button class="on" data-k="s">Stars</button><button data-k="p">Premium</button></div>
   <div class="pk" id="pk"></div>
-  <span id="s2" style="display:none"></span>
-  <div class="bar"><div><small id="s1"></small><b id="s3"></b></div><button class="cta" id="buy"><svg class="i"><use href="#bolt"/></svg>Sotib olish</button></div>
+  <div class="cd sum">
+   <div class="row"><b>Tanlangan</b><span id="s1">100 Stars</span></div>
+   <div class="row"><b>Chegirma</b><span id="s2" style="color:var(--ok)">0 so'm</span></div>
+   <div class="row"><b>Jami</b><span id="s3" style="font-size:17px">21 000 so'm</span></div>
+  </div>
+  <button class="cta" id="buy"><svg class="i"><use href="#bolt"/></svg>Sotib olish</button>
  </section>
 
  <section class="page" id="ref">
