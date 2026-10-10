@@ -129,6 +129,14 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .cpb{border:0;border-radius:11px;width:36px;height:36px;background:var(--acc);color:#fff;display:grid;place-items:center;flex:none}
 .bn span{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;letter-spacing:2px;opacity:.9}
 #tun{display:none}
+.pw{font-size:12px;color:var(--sub);background:rgba(245,158,11,.12);border-radius:12px;padding:10px 12px;margin-top:10px;line-height:1.4}
+.pamt{border:1.5px solid var(--acc)}
+.pamt b{font-size:22px!important;letter-spacing:.3px}
+.pbtn2{background:var(--bg);color:var(--text);box-shadow:none;border:1px solid var(--line)}
+.pok{text-align:center;padding:18px 0 8px}
+.pok .ic{margin:0 auto 12px;width:64px;height:64px;border-radius:50%}
+.pok .ic svg{width:30px;height:30px}
+.pok h3{margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -282,6 +290,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
  <button class="lgb" data-lg="ru"><b>Русский</b><span class="rd"></span></button>
  <button class="lgb" data-lg="en"><b>English</b><span class="rd"></span></button>
 </div>
+<div class="sh" id="psh"></div>
 <div class="toast" id="ts"><svg class="i"><use href="#check"/></svg><span id="tt"></span></div>
 
 <script>
@@ -324,7 +333,15 @@ function sh(v){$("#ov").classList.toggle("on",v);$("#sh").classList.toggle("on",
 $$("[data-sheet]").forEach(function(b){b.onclick=function(){sh(true)}});$("#ov").onclick=function(){sh(false)};
 $$("#am button").forEach(function(b){b.onclick=function(){on($$("#am button"),b);$("#amt").value=b.textContent.replace(/\s/g,"")}});
 $$(".mt").forEach(function(b){b.onclick=function(){on($$(".mt"),b)}});
-$("#go2").onclick=function(){sh(false);toast("To'lov so'rovi yuborildi")};
+$("#go2").onclick=function(){
+ var a=Math.round(+$("#amt").value);
+ if(!a||a<1000){toast(LG=="ru"?"Минимум 1 000 сум":LG=="en"?"Minimum 1 000 UZS":"Minimal summa 1 000 so'm");return}
+ if(a>1000000){toast(LG=="ru"?"Максимум 1 000 000 сум":LG=="en"?"Maximum 1 000 000 UZS":"Maksimal summa 1 000 000 so'm");return}
+ if(!BOT){toast("Bot topilmadi");return}
+ sh(false);
+ var u="https://t.me/"+BOT+"?start=topup_"+a;
+ try{TG.openTelegramLink(u);setTimeout(function(){try{TG.close()}catch(e){}},300)}catch(e){window.open(u,"_blank")}
+};
 // misc
 $("#cp").onclick=function(){try{navigator.clipboard.writeText(RL)}catch(e){}toast("Havola nusxalandi")};
 $$("[data-sw]").forEach(function(s){s.onclick=function(){s.classList.toggle("on")}});
@@ -420,6 +437,62 @@ SVB[0].onclick=function(){goShop("s")};
 SVB[1].onclick=function(){goShop("p")};
 SVB[2].onclick=function(){$(".nav button[data-t=ref]").click()};
 SVB[3].onclick=function(){sh(true)};
+
+// ===== To'lov Mini App ichida (noyob summa) =====
+var API=Q.get("api")||"",PAYT=null,PAYP=null,ORD=null;
+function L3(u,r,e){return LG=="ru"?r:LG=="en"?e:u}
+function post(p,b){b=b||{};b.initData=(TG&&TG.initData)||"";return fetch(API+p,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(b)}).then(function(r){return r.json()})}
+function psh(v){$("#ov").classList.toggle("on",v);$("#psh").classList.toggle("on",v)}
+function stopPay(){clearInterval(PAYT);clearInterval(PAYP);PAYT=null;PAYP=null}
+function copyTxt(t,m){try{navigator.clipboard.writeText(String(t))}catch(e){}toast(m)}
+function p2(n){return(n<10?"0":"")+n}
+function crow(icon,label,val,raw,cls){
+ return '<div class="idc'+(cls?" "+cls:"")+'"><span class="ic b"><svg class="i"><use href="#'+icon+'"/></svg></span><div><small>'+label+'</small><b>'+val+'</b></div><button class="cpb" data-raw="'+raw+'"><svg class="i"><use href="#copy"/></svg></button></div>'}
+function showOrder(o){
+ ORD=o;stopPay();
+ var h='<div class="grab"></div><h3>'+L3("To'lov","Оплата","Payment")+'</h3><div class="idrow" style="margin-top:0">'+
+  crow("card",L3("Karta raqami","Номер карты","Card number"),o.card,String(o.card).replace(/\s/g,""))+
+  (o.owner?'<div class="idc"><span class="ic p"><svg class="i"><use href="#user"/></svg></span><div><small>'+L3("Karta egasi","Владелец карты","Card holder")+'</small><b>'+o.owner+'</b></div></div>':"")+
+  crow("bolt",L3("O'tkazish summasi","Сумма перевода","Amount to send"),fm(o.pay)+(LG=="ru"?" сум":LG=="en"?" UZS":" so'm"),String(o.pay),"pamt")+
+  '</div><div class="pw">'+L3("Aynan shu summani o'tkazing, bir so'm ham farq qilmasin. Aks holda to'lov aniqlanmaydi.","Переведите именно эту сумму, ни на сум больше или меньше. Иначе платёж не определится.","Send exactly this amount, not a single sum more or less. Otherwise the payment will not be detected.")+'</div>'+
+  '<div class="pl2" style="margin-top:12px"><span id="pst">'+L3("To'lov kutilmoqda...","Ожидаем платёж...","Waiting for payment...")+'</span><b id="ptm"></b></div>'+
+  '<div class="pl2" style="margin-top:4px"><span>'+L3("Balansga qo'shiladi","Будет зачислено","Will be credited")+'</span><b>'+fm(o.base)+(LG=="ru"?" сум":LG=="en"?" UZS":" so'm")+'</b></div>'+
+  '<button class="cta pbtn2" id="pcancel">'+L3("Bekor qilish","Отмена","Cancel")+'</button>';
+ $("#psh").innerHTML=h;
+ $$("#psh .cpb").forEach(function(b){b.onclick=function(){copyTxt(b.dataset.raw,L3("Nusxalandi","Скопировано","Copied"))}});
+ $("#pcancel").onclick=function(){stopPay();post("/api/cancel").catch(function(){});psh(false)};
+ tick();PAYT=setInterval(tick,1000);PAYP=setInterval(poll,4000);
+ psh(true)}
+function tick(){if(!ORD||!$("#ptm"))return;var s=Math.max(0,Math.floor((ORD.expires-Date.now())/1000));$("#ptm").textContent=p2(Math.floor(s/60))+":"+p2(s%60);if(s<=0)$("#ptm").style.color="var(--bad)"}
+function poll(){
+ if(!ORD)return;
+ post("/api/status",{pay:ORD.pay}).then(function(r){
+  if(!r.ok||!ORD)return;
+  if(r.status=="paid")paid(r.balance);
+  else if(r.status=="expired")expired()
+ }).catch(function(){})}
+function expired(){
+ stopPay();
+ $("#psh").innerHTML='<div class="grab"></div><div class="pok"><h3>'+L3("Vaqt tugadi","Время истекло","Time expired")+'</h3><p class="pw">'+L3("To'lov topilmadi. Agar pul o'tkazgan bo'lsangiz, admin bilan bog'laning.","Платёж не найден. Если вы уже перевели деньги, свяжитесь с админом.","Payment not found. If you already sent the money, contact the admin.")+'</p></div><button class="cta" id="pagain">'+L3("Qayta urinish","Повторить","Try again")+'</button>';
+ $("#pagain").onclick=function(){psh(false);sh(true)}}
+function paid(bal){
+ var base=ORD.base;stopPay();ORD=null;
+ BAL=Number(bal);if(!hid)$("#bv").textContent=fm(BAL)+" so'm";
+ T.unshift(["Balans to'ldirildi",dt(Date.now()),"+"+fm(base),"i","in","g"]);tx("a");
+ try{TG.HapticFeedback.notificationOccurred("success")}catch(e){}
+ $("#psh").innerHTML='<div class="grab"></div><div class="pok"><div class="ic g"><svg class="i"><use href="#check"/></svg></div><h3>'+L3("To'lov qabul qilindi","Платёж принят","Payment received")+'</h3><p class="pw" style="background:none">+'+fm(base)+(LG=="ru"?" сум":LG=="en"?" UZS":" so'm")+'</p></div>';
+ setTimeout(function(){psh(false)},2500)}
+$("#ov").addEventListener("click",function(){psh(false)});
+$("#go2").onclick=function(){
+ var a=Math.round(+$("#amt").value);
+ if(!a||a<1000){toast(L3("Minimal summa 1 000 so'm","Минимум 1 000 сум","Minimum 1 000 UZS"));return}
+ if(a>1000000){toast(L3("Maksimal summa 1 000 000 so'm","Максимум 1 000 000 сум","Maximum 1 000 000 UZS"));return}
+ if(!API||!(TG&&TG.initData)){toast(L3("Mini App'ni bot orqali oching","Откройте Mini App через бота","Open the Mini App via the bot"));return}
+ sh(false);
+ post("/api/order",{amount:a}).then(function(r){
+  if(!r.ok){toast(r.error||"Xato");return}
+  showOrder(r.order)
+ }).catch(function(){toast(L3("Serverga ulanib bo'lmadi","Нет связи с сервером","Server unreachable"))})};
 var BA=$$(".ba button");
 BA[1].onclick=function(){toast("Tez orada")};
 BA[2].onclick=function(){toast("Tez orada")};
