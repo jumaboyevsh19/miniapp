@@ -109,6 +109,13 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translate(-50%,-90px);background:var(--text);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:13.5px;font-weight:600;z-index:30;transition:.3s;display:flex;gap:8px;align-items:center}
 .toast.on{transform:translate(-50%,0)}
 .cd:has(#chart){display:none}
+.idrow{display:grid;gap:8px;margin-top:16px}
+.idc{display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:16px;padding:10px 12px;text-align:left}
+.idc div{flex:1;min-width:0}
+.idc small{display:block;font-size:11px;color:var(--sub);margin-bottom:2px}
+.idc b{display:block;font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.2px}
+.cpb{border:0;border-radius:11px;width:36px;height:36px;background:var(--acc);color:#fff;display:grid;place-items:center;flex:none}
+.bn span{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;letter-spacing:2px;opacity:.9}
 </style>
 </head>
 <body>
@@ -140,7 +147,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 <div class="app">
  <div class="top">
   <div class="ring"><div class="av">U</div></div>
-  <div class="t"><b>Foydalanuvchi</b><span class="lv"><svg class="i"><use href="#award"/></svg><span id="lvt">Bronza</span></span></div>
+  <div class="t"><b>Foydalanuvchi</b><small id="tun" style="display:block;color:var(--sub);font-size:12px;margin-top:1px"></small><span class="lv"><svg class="i"><use href="#award"/></svg><span id="lvt">Bronza</span></span></div>
   <button class="ib"><svg class="i"><use href="#bell"/></svg><i></i></button>
  </div>
 
@@ -206,7 +213,11 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
  <section class="page" id="me">
   <div class="cd hero">
    <div class="ring" style="display:inline-block"><div class="av" style="width:72px;height:72px;font-size:26px">U</div></div>
-   <h1 style="font-size:20px">Foydalanuvchi</h1><small>@username &middot; ID 123456789</small>
+   <h1 style="font-size:20px">Foydalanuvchi</h1>
+   <div class="idrow">
+    <div class="idc"><span class="ic b"><svg class="i"><use href="#user"/></svg></span><div><small>Foydalanuvchi nomi</small><b id="pun">@username</b></div></div>
+    <div class="idc"><span class="ic p"><svg class="i"><use href="#shield"/></svg></span><div><small>Telegram ID</small><b id="pid">-</b></div><button class="cpb" id="cpid"><svg class="i"><use href="#copy"/></svg></button></div>
+   </div>
   </div>
   <div class="list">
    <div class="row"><div class="ic b"><svg class="i"><use href="#globe"/></svg></div><div class="m"><b>Til</b><small>O'zbekcha</small></div><svg class="i"><use href="#go"/></svg></div>
@@ -287,8 +298,9 @@ $(".top .t b").textContent=NAME;
 $$(".av").forEach(function(a){a.textContent=(NAME[0]||"U").toUpperCase()});
 if(U.photo_url){var im=new Image();im.onload=function(){$$(".av").forEach(function(e){e.textContent="";e.style.backgroundImage='url("'+U.photo_url+'")';e.style.backgroundSize="cover";e.style.backgroundPosition="center"})};im.src=U.photo_url}
 $("#bv").textContent=fm(BAL)+" so'm";$("#cg").textContent=REF+" ta taklif";
-$("#uid").textContent=UID?"ID "+UID:"ID";
-$("#me h1").textContent=NAME;$("#me .hero small").textContent=(U.username?"@"+U.username+" \u00b7 ":"")+(UID?"ID "+UID:"");
+$("#uid").textContent=UID?"ID "+fm(UID):"ID";
+$("#me h1").textContent=NAME;$("#pun").textContent=U.username?"@"+U.username:"Belgilanmagan";$("#pid").textContent=UID?String(UID):"-";$("#tun").textContent=U.username?"@"+U.username:"";
+$("#cpid").onclick=function(){try{navigator.clipboard.writeText(String(UID))}catch(e){}toast("ID nusxalandi")};
 $("#re").textContent=fm(ERN)+" so'm";$("#rc").textContent=REF;$("#rls").textContent=RL.replace("https://","");
 var LV=[["Bronza",0],["Silver",5],["Gold",15],["Platinum",30]],li=0;
 LV.forEach(function(l,i){if(REF>=l[1])li=i});
