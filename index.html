@@ -2,10 +2,12 @@
 <html lang="uz">
 <head>
 <meta charset="utf-8">
-<meta name="build" content="2026-10-11-s9">
+<meta name="build" content="2026-10-11-s12">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bot Mini App</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>try{document.documentElement.setAttribute("data-skin",localStorage.getItem("skin")==="classic"?"classic":"premium")}catch(e){document.documentElement.setAttribute("data-skin","premium")}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root{--bg:#f3f5fa;--card:#fff;--text:#0f1320;--sub:#737a90;--line:#e7eaf3;--acc:#0e9f8e;--acc2:#2563eb;--ok:#12a36d;--bad:#e5484d;--warn:#f59e0b;--sh:0 1px 2px rgba(20,30,70,.05),0 8px 24px rgba(20,30,70,.07);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
@@ -282,6 +284,279 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
 .stale b{display:block;font-size:14px}
 .stale small{display:block;font-size:12px;margin-top:2px;opacity:.85}
 .stale button{flex:none;border:0;border-radius:12px;padding:9px 13px;font-size:13px;font-weight:700;background:#1b1200;color:#fff}
+
+/* ===================== PREMIUM: qora va oltin ===================== */
+html:root[data-skin="premium"]{--bg:#09090a;--card:#121214;--card2:#1a1a1d;--text:#f5efe1;--sub:#9d9583;--line:rgba(212,175,55,.14);--acc:#d4af37;--acc2:#f1d98a;--ok:#7fd1a0;--bad:#ea7b80;--warn:#d4af37;--sh:0 14px 34px rgba(0,0,0,.55);--serif:"Cormorant Garamond","Playfair Display",Georgia,"Times New Roman",serif;--gold:linear-gradient(135deg,#f6e3a1,#d4af37 55%,#a8832a);color-scheme:dark}
+html[data-skin="premium"],html[data-skin="premium"] body{background:var(--bg)}
+html[data-skin="premium"] body{background:radial-gradient(120% 50% at 50% -8%,rgba(212,175,55,.08),transparent 60%),var(--bg);font-family:"Inter",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-variant-numeric:lining-nums tabular-nums}
+html[data-skin="premium"] .row:has(#dk){display:none}
+
+/* sarlavha */
+html[data-skin="premium"] .ring{background:conic-gradient(#f6e3a1,#9c7a1f,#f6e3a1)}
+html[data-skin="premium"] .av{background:var(--card2);color:#f1d98a;font-family:var(--serif);font-weight:700}
+html[data-skin="premium"] .top b{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.02em}
+html[data-skin="premium"] .lv{color:#f1d98a;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3)}
+html[data-skin="premium"] .ib{background:var(--card);border:1px solid var(--line);color:#f1d98a;box-shadow:none}
+html[data-skin="premium"] .ib i{background:#d4af37;border-color:var(--card)}
+
+/* asosiy karta */
+html[data-skin="premium"] .bal{background:linear-gradient(145deg,#1d1911 0%,#0e0e0f 55%,#1a160b 100%);border:1px solid rgba(212,175,55,.4);box-shadow:0 22px 46px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,236,170,.12)}
+html[data-skin="premium"] .bal:before{background:radial-gradient(circle at 92% -8%,rgba(241,217,138,.26),transparent 55%),repeating-linear-gradient(115deg,rgba(212,175,55,.05) 0 1px,transparent 1px 16px)}
+html[data-skin="premium"] .br{color:#cdbf95;opacity:1;letter-spacing:.16em;text-transform:uppercase;font-size:11px;font-weight:600}
+html[data-skin="premium"] .br button{background:rgba(212,175,55,.1);color:#f1d98a;border:1px solid rgba(212,175,55,.28)}
+html[data-skin="premium"] .bal h1{font-family:var(--serif);font-size:46px;font-weight:700;letter-spacing:-.5px;background:linear-gradient(180deg,#fff6cf,#f1d98a 48%,#c9a24a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+html[data-skin="premium"] .chg{color:#f1d98a;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.28)}
+html[data-skin="premium"] .bn,html[data-skin="premium"] .bn span{color:#bfae7a;opacity:1}
+html[data-skin="premium"] .chip{background:linear-gradient(135deg,#fbe9a6,#c9a23a 60%,#8a6b1c)}
+html[data-skin="premium"] .ba button{background:rgba(255,255,255,.04);color:#efe4c4;border:1px solid rgba(212,175,55,.22);-webkit-backdrop-filter:none;backdrop-filter:none}
+html[data-skin="premium"] .ba button:first-child{background:var(--gold);color:#1a1405;border-color:transparent;box-shadow:0 8px 22px rgba(212,175,55,.28)}
+
+/* kartalar va ro'yxatlar */
+html[data-skin="premium"] .cd,html[data-skin="premium"] .list{background:var(--card);border:1px solid var(--line);box-shadow:none;border-radius:22px}
+html[data-skin="premium"] .ch h2{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:.01em}
+html[data-skin="premium"] .row{padding:14px 16px;border-bottom:1px solid var(--line)}
+html[data-skin="premium"] .row b{font-weight:600}
+html[data-skin="premium"] .pos{color:var(--ok)}
+html[data-skin="premium"] .neg{color:var(--text)}
+html[data-skin="premium"] .row>svg{color:#8b7a45}
+html[data-skin="premium"] .ic,html[data-skin="premium"] .ic.o,html[data-skin="premium"] .ic.p,html[data-skin="premium"] .ic.g,html[data-skin="premium"] .ic.b{background:rgba(212,175,55,.09);color:#e9cd78;border:1px solid rgba(212,175,55,.2)}
+html[data-skin="premium"] .sec2{color:#d4af37;letter-spacing:.24em;font-size:10.5px;font-weight:700;margin:22px 6px 10px}
+html[data-skin="premium"] .tabs{background:var(--bg)}
+html[data-skin="premium"] .tabs button.on{background:var(--card2);color:#f1d98a;box-shadow:none}
+html[data-skin="premium"] .pr{background:var(--card2)}
+html[data-skin="premium"] .pr i{background:linear-gradient(90deg,#a8832a,#f1d98a)}
+html[data-skin="premium"] #lvp{color:#f1d98a!important;font-family:var(--serif);font-size:20px}
+
+/* xizmat tugmalari */
+html[data-skin="premium"] .sv button{background:var(--card);border:1px solid var(--line);box-shadow:none;color:var(--text)}
+html[data-skin="premium"] .sv span,html[data-skin="premium"] .sv span.o,html[data-skin="premium"] .sv span.p,html[data-skin="premium"] .sv span.g,html[data-skin="premium"] .sv span.b{background:linear-gradient(145deg,#2a2411,#14120a);border:1px solid rgba(212,175,55,.38);color:#f1d98a}
+
+/* filtr, segment */
+html[data-skin="premium"] .fl button{background:var(--card);color:var(--sub);border:1px solid var(--line)}
+html[data-skin="premium"] .fl button.on{background:var(--gold);color:#1a1405;border-color:transparent}
+html[data-skin="premium"] .seg{background:var(--card);border:1px solid var(--line);box-shadow:none}
+html[data-skin="premium"] .seg button{color:var(--sub)}
+html[data-skin="premium"] .seg button.on{background:var(--gold);color:#1a1405;box-shadow:0 6px 16px rgba(212,175,55,.25)}
+
+/* paketlar */
+html[data-skin="premium"] .pc{background:var(--card);border:1px solid var(--line);box-shadow:none}
+html[data-skin="premium"] .pc.sel{border-color:#d4af37;background:linear-gradient(180deg,rgba(212,175,55,.13),rgba(212,175,55,.02))}
+html[data-skin="premium"] .pc em{color:#f1d98a;font-family:var(--serif);font-size:20px;font-weight:700}
+html[data-skin="premium"] .tag{background:rgba(212,175,55,.16);color:#f1d98a;border:1px solid rgba(212,175,55,.3)}
+html[data-skin="premium"] .sum .row b{color:var(--sub)}
+
+/* asosiy tugma, kalit */
+html[data-skin="premium"] .cta{background:var(--gold);color:#1a1405;box-shadow:0 12px 28px rgba(212,175,55,.26);letter-spacing:.02em}
+html[data-skin="premium"] .cta.pbtn2,html[data-skin="premium"] .pbtn2{background:var(--card2);color:var(--text);border:1px solid var(--line);box-shadow:none}
+html[data-skin="premium"] .sw{background:#2a2a2d}
+html[data-skin="premium"] .sw.on{background:linear-gradient(135deg,#d4af37,#a8832a)}
+
+/* pastki menyu: 4 ta teng tugma */
+html[data-skin="premium"] .nav div{background:rgba(14,14,15,.94);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(212,175,55,.24);border-radius:26px;padding:6px;box-shadow:0 18px 42px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,236,170,.06)}
+html[data-skin="premium"] .nav button{position:relative;color:#7f7868;gap:5px;background:none;font-weight:600;letter-spacing:.02em;padding:10px 0 9px}
+html[data-skin="premium"] .nav button.on{background:none;color:#f1d98a}
+html[data-skin="premium"] .nav button.on:before{content:"";position:absolute;top:0;left:50%;margin-left:-13px;width:26px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#f1d98a,transparent)}
+html[data-skin="premium"] .nav button.on svg{filter:drop-shadow(0 0 7px rgba(212,175,55,.55))}
+
+/* oynalar */
+html[data-skin="premium"] .ov{background:rgba(0,0,0,.7)}
+html[data-skin="premium"] .sh{background:#121214;border-top:1px solid rgba(212,175,55,.28)}
+html[data-skin="premium"] .grab{background:rgba(212,175,55,.4)}
+html[data-skin="premium"] .sh h3{font-family:var(--serif);font-size:23px;font-weight:700}
+html[data-skin="premium"] .inp{background:var(--card2);border:1px solid var(--line);color:var(--text)}
+html[data-skin="premium"] .inp:focus{border-color:#d4af37}
+html[data-skin="premium"] .am button{background:var(--card2);border:1px solid var(--line);color:var(--text)}
+html[data-skin="premium"] .am button.on{border-color:#d4af37;color:#f1d98a}
+html[data-skin="premium"] .mt,html[data-skin="premium"] .lgb{border:1px solid var(--line)}
+html[data-skin="premium"] .mt.on,html[data-skin="premium"] .lgb.on{border-color:#d4af37}
+html[data-skin="premium"] .mt.on .rd,html[data-skin="premium"] .lgb.on .rd{border:5px solid #d4af37}
+
+/* taklif */
+html[data-skin="premium"] .promo{background:linear-gradient(120deg,#1d1a10,#0f0f10);border:1px solid rgba(212,175,55,.38);box-shadow:none}
+html[data-skin="premium"] .promo:before{background:radial-gradient(circle at 100% 0,rgba(241,217,138,.2),transparent 55%)}
+html[data-skin="premium"] .promo .pi{background:rgba(212,175,55,.12);color:#f1d98a;border:1px solid rgba(212,175,55,.3)}
+html[data-skin="premium"] .promo b{font-family:var(--serif);font-size:18px}
+html[data-skin="premium"] .pgo2{background:var(--gold);color:#1a1405;box-shadow:none}
+html[data-skin="premium"] .rcard,html[data-skin="premium"] .cc.ref,html[data-skin="premium"] #ref .bal{background:linear-gradient(135deg,#0e2b23,#0a1512 72%)!important;border:1px solid rgba(127,209,160,.34)!important;box-shadow:none!important}
+html[data-skin="premium"] .rcard small{color:#a9cbb9}
+html[data-skin="premium"] .rcard b{font-family:var(--serif);font-size:25px;color:#f1d98a}
+html[data-skin="premium"] .rcard .rb{background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.3);color:#f1d98a}
+html[data-skin="premium"] #ref .bal h1{background:none;-webkit-text-fill-color:#f1d98a;color:#f1d98a}
+html[data-skin="premium"] .rs div{background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.2)}
+html[data-skin="premium"] .stp i{background:var(--gold);color:#1a1405}
+html[data-skin="premium"] .idc{background:var(--card2)}
+html[data-skin="premium"] .cpb{background:var(--gold);color:#1a1405}
+
+/* kartalar tanlovi, to'lov */
+html[data-skin="premium"] .cc.main{background:linear-gradient(135deg,#1d1911,#0e0e0f);border:1px solid rgba(212,175,55,.4)}
+html[data-skin="premium"] .ccb{font-family:var(--serif);color:#f1d98a;font-size:27px}
+html[data-skin="premium"] .cc.sel{border-color:#f1d98a;box-shadow:0 0 0 3px rgba(212,175,55,.3)}
+html[data-skin="premium"] .qsum{background:var(--card2)}
+html[data-skin="premium"] .pamt2{background:linear-gradient(145deg,#1d1911,#0e0e0f);border:1px solid rgba(212,175,55,.45);box-shadow:none;color:#f5efe1}
+html[data-skin="premium"] .pamv{font-family:var(--serif);background:linear-gradient(180deg,#fff6cf,#f1d98a 50%,#c9a24a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+html[data-skin="premium"] .pamv em{-webkit-text-fill-color:#cdbf95}
+html[data-skin="premium"] .pcopy{background:rgba(212,175,55,.13);color:#f1d98a;border:1px solid rgba(212,175,55,.3)}
+html[data-skin="premium"] .pcard{background:linear-gradient(145deg,#1d1911,#0e0e0f);border:1px solid rgba(212,175,55,.32);box-shadow:none}
+html[data-skin="premium"] .ptimer .tp{stroke:#d4af37}
+html[data-skin="premium"] .pck circle{fill:rgba(212,175,55,.12);stroke:#d4af37}
+html[data-skin="premium"] .pck path{stroke:#f1d98a}
+html[data-skin="premium"] .psam{color:#f1d98a;font-family:var(--serif);font-size:40px}
+html[data-skin="premium"] .psu h3{font-family:var(--serif);font-size:24px}
+html[data-skin="premium"] .pw{background:rgba(212,175,55,.07);color:#cdbf95;border:1px solid rgba(212,175,55,.16)}
+html[data-skin="premium"] .psb{background:var(--card2)}
+
+/* boost */
+html[data-skin="premium"] .bhero{background:linear-gradient(135deg,#1d1a10,#0e0e0f 60%,#1b1608);border:1px solid rgba(212,175,55,.42);box-shadow:none;color:#f5efe1}
+html[data-skin="premium"] .bhero:before{background:radial-gradient(circle at 100% 0,rgba(241,217,138,.24),transparent 55%)}
+html[data-skin="premium"] .bhero .bi{background:rgba(212,175,55,.14);color:#f1d98a;border:1px solid rgba(212,175,55,.32)}
+html[data-skin="premium"] .bhero b{font-family:var(--serif);font-size:22px}
+html[data-skin="premium"] .bcard{background:var(--card);border:1px solid var(--line)}
+html[data-skin="premium"] .bin{background:var(--card2);border:1px solid var(--line)}
+html[data-skin="premium"] .bin:focus-within{border-color:#d4af37}
+html[data-skin="premium"] .bstep button{background:var(--card2);color:#f1d98a;border:1px solid rgba(212,175,55,.25)}
+html[data-skin="premium"] .bstep input,html[data-skin="premium"] .bday b{font-family:var(--serif)}
+html[data-skin="premium"] .bchips button{background:var(--card2);border:1px solid var(--line);color:var(--sub)}
+html[data-skin="premium"] .bchips button.on{background:rgba(212,175,55,.14);border-color:#d4af37;color:#f1d98a}
+html[data-skin="premium"] input[type=range].brg{background:linear-gradient(90deg,#d4af37 var(--p,30%),var(--card2) var(--p,30%));border:1px solid var(--line)}
+html[data-skin="premium"] .brg::-webkit-slider-thumb{background:#1a1405;border:4px solid #f1d98a;box-shadow:0 4px 14px rgba(212,175,55,.5)}
+html[data-skin="premium"] .brg::-moz-range-thumb{background:#1a1405;border:4px solid #f1d98a}
+html[data-skin="premium"] .bav{background:linear-gradient(135deg,#f1d98a,#9c7a1f);color:#1a1405}
+html[data-skin="premium"] .bchk{background:var(--card2)}
+
+/* PIN, ogohlantirish */
+html[data-skin="premium"] .lk-t{font-family:var(--serif);font-size:26px}
+html[data-skin="premium"] .lk-d i{border-color:#d4af37}
+html[data-skin="premium"] .lk-d i.f{background:#d4af37}
+html[data-skin="premium"] .lk-k button{background:var(--card);border:1px solid var(--line)}
+html[data-skin="premium"] .lk-k button:active{background:#d4af37;color:#1a1405}
+html[data-skin="premium"] .stale{background:#d4af37;color:#1a1405}
+html[data-skin="premium"] .toast{border:1px solid #d4af37}
+
+/* ===================== PREMIUM v2: har bir boshqaruv o'z rangida ===================== */
+/* ikonka pufaklari: --c = "R,G,B" */
+html[data-skin="premium"] .ic,html[data-skin="premium"] .ic.o,html[data-skin="premium"] .ic.p,html[data-skin="premium"] .ic.g,html[data-skin="premium"] .ic.b{background:rgba(var(--c,212,175,55),.14);color:rgb(var(--c,212,175,55));border:1px solid rgba(var(--c,212,175,55),.34);box-shadow:0 0 18px rgba(var(--c,212,175,55),.14)}
+html[data-skin="premium"] .ic.o{--c:251,146,60}
+html[data-skin="premium"] .ic.p{--c:167,139,250}
+html[data-skin="premium"] .ic.g{--c:52,211,153}
+html[data-skin="premium"] .ic.b{--c:96,165,250}
+html[data-skin="premium"] #lrow .ic{--c:34,211,238}
+html[data-skin="premium"] #secrow .ic{--c:52,211,153}
+html[data-skin="premium"] #ordrow .ic{--c:251,191,36}
+html[data-skin="premium"] #wdrow .ic{--c:251,146,60}
+html[data-skin="premium"] #hrow .ic{--c:56,189,248}
+html[data-skin="premium"] #chrow .ic{--c:96,165,250}
+html[data-skin="premium"] #shrow .ic{--c:74,222,128}
+html[data-skin="premium"] #rfrow .ic{--c:163,230,53}
+html[data-skin="premium"] .row:has(#skn) .ic{--c:212,175,55}
+html[data-skin="premium"] .row:has(#ntf) .ic{--c:250,204,21}
+html[data-skin="premium"] .row:has(#snd) .ic{--c:244,114,182}
+html[data-skin="premium"] .row:has(#hap) .ic{--c:45,212,191}
+html[data-skin="premium"] .row:has(#hidb) .ic{--c:129,140,248}
+/* kalitlar o'z qatori rangida */
+html[data-skin="premium"] .sw.on{background:rgb(var(--c,212,175,55))}
+html[data-skin="premium"] .row:has(#skn) .sw{--c:212,175,55}
+html[data-skin="premium"] .row:has(#ntf) .sw{--c:250,204,21}
+html[data-skin="premium"] .row:has(#snd) .sw{--c:244,114,182}
+html[data-skin="premium"] .row:has(#hap) .sw{--c:45,212,191}
+html[data-skin="premium"] .row:has(#hidb) .sw{--c:129,140,248}
+html[data-skin="premium"] .row:has(#pbuy) .sw{--c:52,211,153}
+
+/* bosh sahifa: 3 ta amal tugmasi */
+html[data-skin="premium"] .ba button{background:rgba(var(--c),.13);color:rgb(var(--c));border:1px solid rgba(var(--c),.45);font-weight:700}
+html[data-skin="premium"] .ba button:nth-child(1){--c:52,211,153;background:linear-gradient(135deg,#6ee7b7,#10b981);color:#03200f;border-color:transparent;box-shadow:0 10px 24px rgba(16,185,129,.34)}
+html[data-skin="premium"] .ba button:nth-child(2){--c:251,146,60}
+html[data-skin="premium"] .ba button:nth-child(3){--c:96,165,250}
+
+/* xizmat tugmalari: yorqin gradient kvadratlar */
+html[data-skin="premium"] .sv button{border:1px solid rgba(var(--c),.28);background:linear-gradient(180deg,rgba(var(--c),.09),var(--card) 70%)}
+html[data-skin="premium"] .sv button:nth-child(1){--c:251,191,36}
+html[data-skin="premium"] .sv button:nth-child(2){--c:167,139,250}
+html[data-skin="premium"] .sv button:nth-child(3){--c:74,222,128}
+html[data-skin="premium"] .sv button:nth-child(4){--c:96,165,250}
+html[data-skin="premium"] .sv span,html[data-skin="premium"] .sv span.o,html[data-skin="premium"] .sv span.p,html[data-skin="premium"] .sv span.g,html[data-skin="premium"] .sv span.b{border:0;color:#fff;box-shadow:0 8px 20px rgba(var(--c),.4)}
+html[data-skin="premium"] .sv button:nth-child(1) span{background:linear-gradient(145deg,#fde68a,#f59e0b);color:#3a2400}
+html[data-skin="premium"] .sv button:nth-child(2) span{background:linear-gradient(145deg,#c4b5fd,#7c5cff)}
+html[data-skin="premium"] .sv button:nth-child(3) span{background:linear-gradient(145deg,#86efac,#16a34a)}
+html[data-skin="premium"] .sv button:nth-child(4) span{background:linear-gradient(145deg,#93c5fd,#2563eb)}
+
+/* pastki menyu: har bir bo'lim o'z rangida */
+html[data-skin="premium"] .nav button:nth-child(1){--c:251,191,36}
+html[data-skin="premium"] .nav button:nth-child(2){--c:167,139,250}
+html[data-skin="premium"] .nav button:nth-child(3){--c:74,222,128}
+html[data-skin="premium"] .nav button:nth-child(4){--c:96,165,250}
+html[data-skin="premium"] .nav button svg{color:rgba(var(--c),.7)}
+html[data-skin="premium"] .nav button.on{color:rgb(var(--c));background:rgba(var(--c),.11);border-radius:20px}
+html[data-skin="premium"] .nav button.on svg{color:rgb(var(--c));filter:drop-shadow(0 0 8px rgba(var(--c),.75))}
+html[data-skin="premium"] .nav button.on:before{background:linear-gradient(90deg,transparent,rgb(var(--c)),transparent)}
+
+/* tablar (Stars / Premium / Boost) */
+html[data-skin="premium"] .seg button{display:flex;align-items:center;justify-content:center;gap:7px}
+html[data-skin="premium"] .seg button:nth-child(1){--c:251,191,36}
+html[data-skin="premium"] .seg button:nth-child(2){--c:167,139,250}
+html[data-skin="premium"] .seg button:nth-child(3){--c:244,114,182}
+html[data-skin="premium"] .seg button svg{width:18px;height:18px;color:rgb(var(--c))}
+html[data-skin="premium"] .seg button.on{box-shadow:0 8px 20px rgba(var(--c),.35)}
+html[data-skin="premium"] .seg button:nth-child(1).on{background:linear-gradient(135deg,#fde68a,#f59e0b);color:#3a2400}
+html[data-skin="premium"] .seg button:nth-child(2).on{background:linear-gradient(135deg,#c4b5fd,#7c5cff);color:#fff}
+html[data-skin="premium"] .seg button:nth-child(3).on{background:linear-gradient(135deg,#f9a8d4,#ec4899);color:#fff}
+html[data-skin="premium"] .seg button.on svg{color:inherit}
+
+/* filtrlar (Hammasi / Kirim / Chiqim) */
+html[data-skin="premium"] .fl button{display:inline-flex;align-items:center;gap:6px}
+html[data-skin="premium"] .fl button svg{width:16px;height:16px}
+html[data-skin="premium"] .fl button:nth-child(1){--c:241,217,138}
+html[data-skin="premium"] .fl button:nth-child(2){--c:74,222,128}
+html[data-skin="premium"] .fl button:nth-child(3){--c:251,146,60}
+html[data-skin="premium"] .fl button svg{color:rgb(var(--c))}
+html[data-skin="premium"] .fl button.on{background:rgba(var(--c),.16);border-color:rgba(var(--c),.6);color:rgb(var(--c))}
+
+/* paketlar o'z rangida */
+html[data-skin="premium"] .pc:has(.ic.o){--pc:251,191,36}
+html[data-skin="premium"] .pc:has(.ic.p){--pc:167,139,250}
+html[data-skin="premium"] .pc .ic.o{--c:251,191,36}
+html[data-skin="premium"] .pc .ic.p{--c:167,139,250}
+html[data-skin="premium"] .pc.sel{border-color:rgb(var(--pc));background:linear-gradient(180deg,rgba(var(--pc),.15),rgba(var(--pc),.02));box-shadow:0 12px 28px rgba(var(--pc),.14)}
+html[data-skin="premium"] .pc em{color:rgb(var(--pc))}
+html[data-skin="premium"] .pc .tag{background:rgba(var(--pc),.16);color:rgb(var(--pc));border-color:rgba(var(--pc),.4)}
+
+/* asosiy tugma: tabga qarab rang oladi */
+html[data-skin="premium"] #shop[data-k="s"] .cta{background:linear-gradient(135deg,#fde68a,#f59e0b);color:#3a2400;box-shadow:0 12px 28px rgba(245,158,11,.3)}
+html[data-skin="premium"] #shop[data-k="p"] .cta{background:linear-gradient(135deg,#c4b5fd,#7c5cff);color:#fff;box-shadow:0 12px 28px rgba(124,92,255,.35)}
+html[data-skin="premium"] #shop[data-k="b"] .cta{background:linear-gradient(135deg,#f9a8d4,#ec4899);color:#fff;box-shadow:0 12px 28px rgba(236,72,153,.35)}
+
+/* sahifa foni nozik rangli yorug'lik */
+html[data-skin="premium"] body:has(#shop.on[data-k="s"]){background:radial-gradient(120% 46% at 50% -8%,rgba(245,158,11,.13),transparent 62%),var(--bg)}
+html[data-skin="premium"] body:has(#shop.on[data-k="p"]){background:radial-gradient(120% 46% at 50% -8%,rgba(124,92,255,.16),transparent 62%),var(--bg)}
+html[data-skin="premium"] body:has(#shop.on[data-k="b"]){background:radial-gradient(120% 46% at 50% -8%,rgba(236,72,153,.15),transparent 62%),var(--bg)}
+html[data-skin="premium"] body:has(#ref.on){background:radial-gradient(120% 46% at 50% -8%,rgba(52,211,153,.13),transparent 62%),var(--bg)}
+html[data-skin="premium"] body:has(#me.on){background:radial-gradient(120% 46% at 50% -8%,rgba(96,165,250,.12),transparent 62%),var(--bg)}
+
+/* Boost: pushti-binafsha */
+html[data-skin="premium"] .bhero{background:linear-gradient(135deg,#2b0f25,#130a1d 60%,#1c0d2d);border:1px solid rgba(244,114,182,.45)}
+html[data-skin="premium"] .bhero:before{background:radial-gradient(circle at 100% 0,rgba(244,114,182,.3),transparent 55%)}
+html[data-skin="premium"] .bhero .bi{background:linear-gradient(145deg,#f9a8d4,#ec4899);color:#fff;border:0;box-shadow:0 8px 20px rgba(236,72,153,.4)}
+html[data-skin="premium"] .blab span{display:inline-flex;align-items:center;gap:9px}
+html[data-skin="premium"] .blab span svg{width:19px;height:19px;color:#f472b6}
+html[data-skin="premium"] .bstep button{background:rgba(244,114,182,.12);color:#f9a8d4;border:1px solid rgba(244,114,182,.4)}
+html[data-skin="premium"] .bchips button.on{background:rgba(244,114,182,.15);border-color:#f472b6;color:#f9a8d4}
+html[data-skin="premium"] .bin:focus-within{border-color:#f472b6}
+html[data-skin="premium"] input[type=range].brg{background:linear-gradient(90deg,#ec4899 0,#8b5cf6 var(--p,30%),var(--card2) var(--p,30%))}
+html[data-skin="premium"] .brg::-webkit-slider-thumb{background:#fff;border:5px solid #ec4899;box-shadow:0 4px 16px rgba(236,72,153,.6)}
+html[data-skin="premium"] .brg::-moz-range-thumb{background:#fff;border:5px solid #ec4899}
+html[data-skin="premium"] #sto .am button.on{border-color:#fbbf24;color:#fbbf24;background:rgba(251,191,36,.12)}
+
+/* tugmalardagi ikonkalar */
+html[data-skin="premium"] .cta svg,html[data-skin="premium"] .pcopy svg{width:20px;height:20px}
+html[data-skin="premium"] #pcancel,html[data-skin="premium"] #pclose2{background:rgba(248,113,113,.11);color:#fca5a5;border:1px solid rgba(248,113,113,.4);box-shadow:none}
+html[data-skin="premium"] #qtop,html[data-skin="premium"] #pagain{background:linear-gradient(135deg,#6ee7b7,#10b981);color:#03200f;box-shadow:0 10px 24px rgba(16,185,129,.3)}
+html[data-skin="premium"] #wgo{background:linear-gradient(135deg,#fdba74,#f97316);color:#2b1200;box-shadow:0 10px 24px rgba(249,115,22,.3)}
+html[data-skin="premium"] #tgo{background:linear-gradient(135deg,#93c5fd,#2563eb);color:#fff;box-shadow:0 10px 24px rgba(37,99,235,.35)}
+html[data-skin="premium"] #qgo{background:linear-gradient(135deg,#fde68a,#f59e0b);color:#3a2400;box-shadow:0 10px 24px rgba(245,158,11,.3)}
+html[data-skin="premium"] #go2{background:linear-gradient(135deg,#6ee7b7,#10b981);color:#03200f;box-shadow:0 10px 24px rgba(16,185,129,.3)}
+/* to'ldirish usullari */
+html[data-skin="premium"] .mt:nth-of-type(1) svg{color:#60a5fa}
+html[data-skin="premium"] .mt:nth-of-type(2) svg{color:#2dd4bf}
+html[data-skin="premium"] .mt:nth-of-type(3) svg{color:#38bdf8}
 </style>
 </head>
 <body>
@@ -315,6 +590,9 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
 <symbol id="receipt" viewBox="0 0 24 24"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></symbol>
 <symbol id="refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
 <symbol id="vib" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="18" rx="2"/><path d="M4 8v8M20 8v8"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
 </defs></svg>
 
 <div class="app">
@@ -361,27 +639,33 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
   </div>
 
   <div class="ch" style="margin:0 2px 10px"><h2>Amallar tarixi</h2></div>
-  <div class="fl" id="fl"><button class="on" data-f="a">Hammasi</button><button data-f="i">Kirim</button><button data-f="o">Chiqim</button></div>
+  <div class="fl" id="fl"><button class="on" data-f="a"><svg class="i"><use href="#layers"/></svg>Hammasi</button><button data-f="i"><svg class="i"><use href="#in"/></svg>Kirim</button><button data-f="o"><svg class="i"><use href="#out"/></svg>Chiqim</button></div>
   <div class="list" id="tx"></div>
  </section>
 
  <section class="page" id="shop">
-  <div class="seg" id="sg"><button class="on" data-k="s">Stars</button><button data-k="p">Premium</button><button data-k="b">Boost</button></div>
+  <div class="seg" id="sg"><button class="on" data-k="s"><svg class="i"><use href="#star"/></svg>Stars</button><button data-k="p"><svg class="i"><use href="#gift"/></svg>Premium</button><button data-k="b"><svg class="i"><use href="#bolt"/></svg>Boost</button></div>
   <div class="pk" id="pk"></div>
+  <div class="bcard" id="sto" style="margin-top:12px">
+   <div class="blab"><span id="stl">Stars kimga yuborilsin?</span></div>
+   <div class="am" id="stm" style="grid-template-columns:1fr 1fr;margin:0 0 10px"><button class="on" data-m="own">O'zimga</button><button data-m="friend">Do'stimga</button></div>
+   <div class="pw" id="stown" style="margin:0;background:var(--bg);color:var(--text);font-weight:600"></div>
+   <div class="bin" id="stfr" style="display:none"><input id="stu" type="text" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"></div>
+  </div>
   <div id="bst" style="display:none">
    <div class="bhero"><div class="bi"><svg class="i"><use href="#bolt"/></svg></div><div><b>Kanal yoki guruhga Boost</b><small>Kanal yoki guruhingizni yuqori darajaga ko'taring</small></div></div>
    <div class="bcard">
-    <div class="blab"><span>Kanal yoki guruh manzilini kiriting</span></div>
+    <div class="blab"><span><svg class="i"><use href="#send"/></svg>Kanal yoki guruh manzilini kiriting</span></div>
     <div class="bin"><input id="bchan" type="text" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"></div>
     <div class="bchk" id="bchk" style="display:none"></div>
    </div>
    <div class="bcard">
-    <div class="blab"><span>Boost soni</span><small id="bnr"></small></div>
+    <div class="blab"><span><svg class="i"><use href="#bolt"/></svg>Boost soni</span><small id="bnr"></small></div>
     <div class="bstep"><button id="bm" aria-label="-">&minus;</button><input id="bn" type="number" inputmode="numeric" min="1" max="1000" value="50"><button id="bp" aria-label="+">+</button></div>
     <div class="bchips" id="bcn"><button data-n="10">10</button><button data-n="25">25</button><button data-n="50">50</button><button data-n="100">100</button></div>
    </div>
    <div class="bcard">
-    <div class="blab"><span>Necha kunga</span><small id="bdmax">Maksimal 90 kun</small></div>
+    <div class="blab"><span><svg class="i"><use href="#clock"/></svg>Necha kunga</span><small id="bdmax">Maksimal 90 kun</small></div>
     <div class="bday"><b id="bdv">30</b><span id="bdw">kun</span></div>
     <input class="brg" id="brg" type="range" min="1" max="90" value="30">
     <div class="bmax"><span>1</span><span>90</span></div>
@@ -437,6 +721,7 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
    <div class="row" id="wdrow" style="cursor:pointer"><div class="ic b"><svg class="i"><use href="#out"/></svg></div><div class="m"><b>Pul yechish</b><small>Kartaga o'tkazib olish</small></div><svg class="i"><use href="#go"/></svg></div>
   </div>
   <div class="sec2">Sozlamalar</div><div class="list">
+   <div class="row"><div class="ic o"><svg class="i"><use href="#star"/></svg></div><div class="m"><b>Premium dizayn</b><small>Qora va oltin ko'rinish</small></div><button class="sw on" id="skn"></button></div>
    <div class="row"><div class="ic o"><svg class="i"><use href="#bell"/></svg></div><div class="m"><b>Bildirishnomalar</b><small>Yangiliklar va amallar</small></div><button class="sw on" id="ntf"></button></div>
    <div class="row"><div class="ic p"><svg class="i"><use href="#bolt"/></svg></div><div class="m"><b>Tungi rejim</b><small>Ko'zga qulay</small></div><button class="sw" id="dk"></button></div>
    <div class="row"><div class="ic o"><svg class="i"><use href="#bell"/></svg></div><div class="m"><b>Tugma ovozi</b><small>Bosganda ovoz chiqadi</small></div><button class="sw on" id="snd"></button></div>
@@ -586,7 +871,7 @@ var DT=[["Bosh","Главная","Home"],["Xizmatlar","Услуги","Services"]
 ["Bildirishnomalar","Уведомления","Notifications"],["Yangiliklar va amallar","Новости и операции","News and activity"],["Tungi rejim","Тёмный режим","Dark mode"],["Ko'zga qulay","Комфортно для глаз","Easy on the eyes"],
 ["Tugma ovozi","Звук кнопок","Button sound"],["Bosganda ovoz chiqadi","Звук при нажатии","Plays a sound on tap"],["Yordam","Помощь","Help"],["Admin bilan bog'lanish","Связаться с админом","Contact admin"],
 ["Balansni to'ldirish","Пополнение баланса","Top up balance"],["Tasdiqlash","Подтвердить","Confirm"],["Buyurtma qabul qilindi","Заказ принят","Order received"],["To'lov so'rovi yuborildi","Запрос на оплату отправлен","Payment request sent"],
-["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Tez orada","Скоро","Coming soon"],["Buyurtmalarim","Мои заказы","My orders"],["Xaridlar va yechishlar tarixi","История покупок и выводов","Purchases and withdrawals"],["Pul yechish","Вывод средств","Withdraw money"],["Kartaga o'tkazib olish","Перевод на карту","Transfer to a card"],["Tebranish","Вибрация","Vibration"],["Tugma bosilganda tebranadi","Вибрация при нажатии","Vibrates on tap"],["Balansni yashirish","Скрыть баланс","Hide balance"],["Balans ko'rinmaydi","Баланс скрыт","Balance stays hidden"],["Kanalimiz","Наш канал","Our channel"],["Do'stlarga botni ulashish","Поделиться ботом","Share the bot"],["Botni do'stlaringizga yuboring","Отправьте бота друзьям","Send the bot to friends"],["Ma'lumotlarni yangilash","Обновить данные","Refresh data"],["Balans va zaxirani qayta yuklash","Перезагрузить баланс и наличие","Reload balance and stock"],["Versiya 8","Версия 8","Version 8"],["Asosiy karta","Основная карта","Main card"],["Taklif kartasi","Реферальная карта","Referral card"],["Stars xaridi","Покупка Stars","Stars purchase"],["Premium xaridi","Покупка Premium","Premium purchase"],["Boost xaridi","Покупка буста","Boost purchase"],["Kartalar o'rtasida o'tkazma","Перевод между картами","Transfer between cards"],["Kanal yoki guruhga Boost","Буст для канала или группы","Channel or group Boost"],["Kanal yoki guruhingizni yuqori darajaga ko'taring","Поднимите свой канал или группу на новый уровень","Take your channel or group to the next level"],["Kanal yoki guruh manzilini kiriting","Введите адрес канала или группы","Enter channel or group username"],["Boost soni","Количество бустов","Number of boosts"],["Necha kunga","На сколько дней","For how many days"],["Maksimal 90 kun","Максимум 90 дней","Maximum 90 days"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
+["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Tez orada","Скоро","Coming soon"],["Premium dizayn","Премиум дизайн","Premium design"],["Qora va oltin ko'rinish","Чёрный и золотой стиль","Black and gold look"],["Buyurtmalarim","Мои заказы","My orders"],["Xaridlar va yechishlar tarixi","История покупок и выводов","Purchases and withdrawals"],["Pul yechish","Вывод средств","Withdraw money"],["Kartaga o'tkazib olish","Перевод на карту","Transfer to a card"],["Tebranish","Вибрация","Vibration"],["Tugma bosilganda tebranadi","Вибрация при нажатии","Vibrates on tap"],["Balansni yashirish","Скрыть баланс","Hide balance"],["Balans ko'rinmaydi","Баланс скрыт","Balance stays hidden"],["Kanalimiz","Наш канал","Our channel"],["Do'stlarga botni ulashish","Поделиться ботом","Share the bot"],["Botni do'stlaringizga yuboring","Отправьте бота друзьям","Send the bot to friends"],["Ma'lumotlarni yangilash","Обновить данные","Refresh data"],["Balans va zaxirani qayta yuklash","Перезагрузить баланс и наличие","Reload balance and stock"],["Versiya 8","Версия 8","Version 8"],["Asosiy karta","Основная карта","Main card"],["Taklif kartasi","Реферальная карта","Referral card"],["Stars xaridi","Покупка Stars","Stars purchase"],["Premium xaridi","Покупка Premium","Premium purchase"],["Boost xaridi","Покупка буста","Boost purchase"],["Kartalar o'rtasida o'tkazma","Перевод между картами","Transfer between cards"],["Kanal yoki guruhga Boost","Буст для канала или группы","Channel or group Boost"],["Kanal yoki guruhingizni yuqori darajaga ko'taring","Поднимите свой канал или группу на новый уровень","Take your channel or group to the next level"],["Kanal yoki guruh manzilini kiriting","Введите адрес канала или группы","Enter channel or group username"],["Boost soni","Количество бустов","Number of boosts"],["Necha kunga","На сколько дней","For how many days"],["Maksimal 90 kun","Максимум 90 дней","Maximum 90 days"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
 var TR={};DT.forEach(function(x){TR[x[0]]={ru:x[1],en:x[2]}});
 var LN={Bronza:{ru:"Бронза",en:"Bronze"},Silver:{ru:"Серебро",en:"Silver"},Gold:{ru:"Золото",en:"Gold"},Platinum:{ru:"Платина",en:"Platinum"}};
 var PH={uz:"Summa, so'm",ru:"Сумма, сум",en:"Amount, UZS"},LGN={uz:"O'zbekcha",ru:"Русский",en:"English"},LG="uz",LGS=null;
@@ -809,7 +1094,7 @@ var HT={stars:"Stars xaridi",premium:"Premium xaridi",boost:"Boost xaridi"};
 function curItem(){
  if(K=="b"){bclamp();return{type:"boost",channel:normCh($("#bchan").value),count:BN,days:BD,price:BN*BD*BOOST_RATE,label:BN+" boost \u00d7 "+BD+" "+L3("kun","дн.","days"),sub:"@"+normCh($("#bchan").value)}}
  var x=D[K][N];
- return{type:K=="s"?"stars":"premium",n:N,price:x[2],label:x[0]+(K=="p"?" Premium":""),sub:""}}
+ return{type:K=="s"?"stars":"premium",n:N,price:x[2],label:x[0]+(K=="p"?" Premium":""),sub:K=="s"&&stUser()?"@"+stUser():"",to:K=="s"?stUser():""}}
 function openPay(){
  if(needApi())return;
  PAYITEM=curItem();
@@ -824,305 +1109,3 @@ function renderQ(){
    ?'<div class="pw">'+L3("Ikkala kartada ham mablag' yetarli emas. Balansni to'ldiring yoki kartalar o'rtasida o'tkazma qiling.","На обеих картах недостаточно средств. Пополните баланс или переведите между картами.","Not enough funds on either card. Top up or transfer between cards.")+'</div><button class="cta" id="qtop">'+L3("Balansni to'ldirish","Пополнить баланс","Top up balance")+'</button>'
    :'<button class="cta" id="qgo"'+(ok?"":" disabled")+'>'+L3("To'lash","Оплатить","Pay")+'</button>');
  $$("#qsh .cc").forEach(function(b){b.onclick=function(){PICK=b.dataset.k;renderQ()}});
- if($("#qgo"))$("#qgo").onclick=doBuy;
- if($("#qtop"))$("#qtop").onclick=function(){sheet("qsh",false);sh(true)}}
-function errText(e){return e=="insufficient"?L3("Mablag' yetarli emas","Недостаточно средств","Not enough funds"):(e||L3("Xatolik yuz berdi","Произошла ошибка","Something went wrong"))}
-function doBuy(){
- if(BUSY)return;BUSY=true;var it=PAYITEM;
- var item=it.type=="boost"?{type:"boost",channel:it.channel,count:it.count,days:it.days}:{type:it.type,n:it.n};
- $("#qgo").disabled=true;
- post("/api/buy",{item:item,from:PICK}).then(function(r){
-  BUSY=false;
-  if(!r||!r.ok){renderQ();toast(errText(r&&r.error));haptic("error");return}
-  setBal(r.balance,r.refbal);applyStock(r.stock,r.maxDays);
-  T.unshift([HT[it.type],dt(Date.now()),"-"+fm(it.price),"o","out","o"]);tx("a");
-  haptic("success");
-  $("#qsh").innerHTML='<div class="grab"></div><div class="psu"><svg class="pck" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg>'+
-   '<h3>'+(r.auto?L3("Boost yuborildi","Буст отправлен","Boost sent"):L3("Buyurtma qabul qilindi","Заказ принят","Order received"))+'</h3>'+
-   '<div class="psb"><b>'+it.label+'</b></div>'+
-   '<p class="pw" style="background:none;margin-top:6px">'+(r.auto?L3("Buyurtma #"+r.orderId+". Kanalda boost sonini tekshiring, ba'zan 1-2 daqiqa kechikadi.","Заказ #"+r.orderId+". Проверьте число бустов на канале, иногда нужно 1-2 минуты.","Order #"+r.orderId+". Check the boost count on the channel, it may take 1-2 minutes."):L3("Buyurtma #"+r.orderId+". Admin uni tez orada bajaradi.","Заказ #"+r.orderId+". Админ скоро его выполнит.","Order #"+r.orderId+". The admin will complete it soon."))+'</p></div>'+
-   '<button class="cta" id="qclose">'+L3("Yopish","Закрыть","Close")+'</button>';
-  $("#qclose").onclick=function(){sheet("qsh",false)};
- }).catch(function(){BUSY=false;renderQ();toast(L3("Serverga ulanib bo'lmadi","Нет связи с сервером","Server unreachable"))})}
-$("#buy").onclick=function(){
- if(K=="b"){
-  if(!normCh($("#bchan").value)){toast(L3("Kanal yoki guruh manzilini to'g'ri kiriting","Введите корректный адрес канала или группы","Enter a valid channel or group username"));$("#bchan").focus();return}
-  if(API&&!BCH){toast(BST=="load"?L3("Tekshirilmoqda, biroz kuting","Идёт проверка, подождите","Checking, please wait"):L3("Kanal yoki guruh topilmadi","Канал или группа не найдены","Channel or group not found"));return}
- }
- openPay()};
-
-// --- kartalar o'rtasida o'tkazma
-function openTransfer(){if(needApi())return;TFROM="main";renderT();sheet("tsh",true)}
-function renderT(keep){
- var to=TFROM=="main"?"ref":"main",fb=TFROM=="main"?BAL:RB;
- $("#tsh").innerHTML='<div class="grab"></div><h3>'+L3("Kartalar o'rtasida o'tkazma","Перевод между картами","Transfer between cards")+'</h3>'+
-  '<div class="tlab">'+L3("Qaysi kartadan","С какой карты","From")+'</div>'+
-  '<div class="cc-list" style="margin:8px 0">'+cardTile(TFROM,false,0,true)+'<button class="tsw" id="tsw" aria-label="swap"><svg class="i"><use href="#swap"/></svg></button><div class="tlab" style="margin-top:6px">'+L3("Qaysi kartaga","На какую карту","To")+'</div>'+cardTile(to,false,0,true)+'</div>'+
-  '<input class="inp" id="tamt" type="number" inputmode="numeric" placeholder="'+PH[LG]+'" value="'+(keep||"")+'">'+
-  '<div class="am" id="tch"><button data-v="10000">10 000</button><button data-v="50000">50 000</button><button data-v="all">'+L3("Hammasi","Всё","All")+'</button></div>'+
-  '<button class="cta" id="tgo">'+L3("O'tkazish","Перевести","Transfer")+'</button>';
- $("#tsw").onclick=function(){var v=$("#tamt").value;TFROM=TFROM=="main"?"ref":"main";renderT(v)};
- $$("#tch button").forEach(function(b){b.onclick=function(){$("#tamt").value=b.dataset.v=="all"?fb:b.dataset.v}});
- $("#tgo").onclick=function(){
-  var a=Math.round(+$("#tamt").value);
-  if(!a||a<1){toast(L3("Summani kiriting","Введите сумму","Enter an amount"));return}
-  if(a>fb){toast(L3("Kartada mablag' yetarli emas","На карте недостаточно средств","Not enough funds on the card"));return}
-  if(BUSY)return;BUSY=true;$("#tgo").disabled=true;
-  post("/api/transfer",{from:TFROM,amount:a}).then(function(r){
-   BUSY=false;
-   if(!r||!r.ok){renderT($("#tamt")?$("#tamt").value:"");toast(errText(r&&r.error));haptic("error");return}
-   var out=TFROM=="main";
-   setBal(r.balance,r.refbal);
-   T.unshift(["Kartalar o'rtasida o'tkazma",dt(Date.now()),(out?"-":"+")+fm(a),out?"o":"i",out?"out":"in",out?"o":"g"]);tx("a");
-   sheet("tsh",false);haptic("success");
-   toast(L3("O'tkazma bajarildi","Перевод выполнен","Transfer completed"))
-  }).catch(function(){BUSY=false;renderT($("#tamt")?$("#tamt").value:"");toast(L3("Serverga ulanib bo'lmadi","Нет связи с сервером","Server unreachable"))})}}
-$$(".ba button")[2].onclick=openTransfer;
-$("#rcard").onclick=openTransfer;
-
-// --- boshlang'ich holat: serverdan haqiqiy balans
-showBal();
-if(API&&TG&&TG.initData)refreshStock();
-
-// ===== Boost zaxirasi =====
-var BSTOCK=null;
-function applyStock(n,md){
- if(typeof n!="number")return;
- BSTOCK=n;BOOST_MAX=n>0?n:1;
- if(BN>BOOST_MAX)BN=BOOST_MAX;
- if(typeof md=="number"&&md>0){
-  DAYS_MAX=Math.min(90,md);if(BD>DAYS_MAX)BD=DAYS_MAX;
-  $("#brg").max=DAYS_MAX;
-  $("#bdmax").textContent=L3("Maksimal "+DAYS_MAX+" kun","Максимум "+DAYS_MAX+" дн.","Maximum "+DAYS_MAX+" days");
-  $$("#bcd button").forEach(function(b){b.disabled=+b.dataset.d>DAYS_MAX});
-  var mx=document.querySelectorAll("#brg + .bmax span");if(mx[1])mx[1].textContent=DAYS_MAX}
- $$("#bcn button").forEach(function(b){b.disabled=+b.dataset.n>n});
- bsum()}
-function refreshStock(){
- if(API&&TG&&TG.initData)post("/api/me").then(function(r){if(r&&r.ok){setBal(r.balance,r.refbal);applyStock(r.stock,r.maxDays);applyMe(r);staleOff()}else if(!r||r.error==="auth"){staleBanner()}}).catch(function(){staleBanner()})}
-$$("#sg button").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.k=="b")refreshStock()})});
-var _buy3=$("#buy").onclick;
-$("#buy").onclick=function(){
- if(K=="b"&&API){
-  if(BSTOCK===0){toast(L3("Hozircha boost mavjud emas","Буст пока нет в наличии","Boost is currently unavailable"));return}
-  if(BSTOCK!==null&&BN>BSTOCK){toast(L3("Mavjud boost: "+BSTOCK,"В наличии: "+BSTOCK,"Available: "+BSTOCK));return}
- }
- _buy3()};
-
-// ===== Sozlamalar, PIN, buyurtmalar, yechish, bildirishnomalar =====
-var LS={g:function(k){try{return localStorage.getItem(k)}catch(e){return null}},s:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-var HAP=LS.g("hap")!=="0",PINH=LS.g("pin")||"",PINBUY=LS.g("pinbuy")==="1",WD_MIN=10000,NTF=true,WPICK="main",HIDT=0;
-function esc(t){return String(t).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-
-// tebranish va tovush
-function haptic(t){if(!HAP)return;try{TG.HapticFeedback.notificationOccurred(t)}catch(e){}}
-function beep(big){
- if(HAP){try{TG.HapticFeedback.impactOccurred(big?"medium":"light")}catch(e){}}
- if(!SND)return;
- try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();var t=AC.currentTime;
-  if(big){tone(t,660,880,.14,.16);tone(t+.1,990,1320,.2,.16)}else{tone(t,880,1320,.1,.14)}}catch(e){}
-}
-$("#hap").onclick=function(){HAP=!HAP;this.classList.toggle("on",HAP);LS.s("hap",HAP?"1":"0")};
-
-// mavzu eslab qolinadi
-(function(){
- var d=LS.g("dark");
- if(d==="1"||d==="0"){document.documentElement.setAttribute("data-theme",d=="1"?"dark":"light");$("#dk").classList.toggle("on",d=="1")}
- else if(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches){$("#dk").classList.add("on")}
- var f=$("#dk").onclick;
- $("#dk").onclick=function(){f.call(this);LS.s("dark",this.classList.contains("on")?"1":"0")};
-})();
-
-// balansni yashirish
-hid=LS.g("hb")==="1";
-$("#hidb").onclick=function(){hid=!hid;LS.s("hb",hid?"1":"0");syncSettings();showBal()};
-var _eye=$("#eyeb").onclick;
-$("#eyeb").onclick=function(){_eye();syncSettings()};
-var _showBal=showBal;
-showBal=function(){$("#bv").textContent=hid?"\u2022\u2022\u2022\u2022\u2022\u2022 so'm":fm(BAL)+" so'm";$("#rbv").textContent=fm(RB)+" so'm"};
-
-// bildirishnoma (serverda saqlanadi)
-$("#ntf").onclick=function(){
- if(needApi())return;
- var el=this;NTF=!NTF;syncSettings();
- post("/api/settings",{notify:NTF}).then(function(r){if(!r||!r.ok)throw 0;toast(NTF?L3("Bildirishnomalar yoqildi","Уведомления включены","Notifications on"):L3("Bildirishnomalar o'chirildi","Уведомления выключены","Notifications off"))}).catch(function(){NTF=!NTF;syncSettings();toast(L3("Serverga ulanib bo'lmadi","Нет связи с сервером","Server unreachable"))})};
-function applyMe(r){
- if(typeof r.notify=="boolean")NTF=r.notify;
- if(typeof r.wdMin=="number")WD_MIN=r.wdMin;
- syncSettings()}
-function syncSettings(){
- $("#hap").classList.toggle("on",HAP);
- $("#hidb").classList.toggle("on",hid);
- $("#ntf").classList.toggle("on",NTF);
- $("#secs").textContent=PINH?L3("PIN yoqilgan","PIN включён","PIN enabled"):L3("PIN o'chiq","PIN выключен","PIN off")}
-var _sl4=setLg;setLg=function(l){_sl4(l);syncSettings()};
-
-// ---------- PIN ----------
-function hashPin(p){
- if(window.crypto&&crypto.subtle&&window.TextEncoder)
-  return crypto.subtle.digest("SHA-256",new TextEncoder().encode("mp:"+p)).then(function(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return("0"+x.toString(16)).slice(-2)}).join("")});
- var h=5381,t="mp:"+p;for(var i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;
- return Promise.resolve("f"+h)}
-var PADBUF="",PADCB=null;
-function pdots(){$$("#lkd i").forEach(function(d,i){d.classList.toggle("f",i<PADBUF.length)})}
-function pad(title,sub,done,cancel){
- PADBUF="";PADCB=done;
- var k="";["1","2","3","4","5","6","7","8","9","","0","\u232b"].forEach(function(n){k+=n===""?'<button class="z"></button>':'<button data-n="'+n+'">'+n+'</button>'});
- $("#lock").innerHTML='<div class="lk-t">'+esc(title)+'</div><div class="lk-s">'+esc(sub||"")+'</div><div class="lk-d" id="lkd"><i></i><i></i><i></i><i></i></div><div class="lk-k">'+k+'</div>'+(cancel?'<button class="lk-c" id="lkc">'+L3("Bekor qilish","Отмена","Cancel")+'</button>':"");
- $("#lock").classList.add("on");
- $$("#lock .lk-k button[data-n]").forEach(function(b){b.onclick=function(){
-  var n=b.dataset.n;
-  if(n=="\u232b")PADBUF=PADBUF.slice(0,-1);else if(PADBUF.length<4)PADBUF+=n;
-  pdots();
-  if(PADBUF.length==4){var v=PADBUF;PADBUF="";setTimeout(function(){pdots();PADCB(v)},120)}
- }});
- if(cancel)$("#lkc").onclick=function(){padClose();cancel()}}
-function padClose(){$("#lock").classList.remove("on");$("#lock").innerHTML=""}
-function padWrong(){var d=$("#lkd");if(d){d.classList.remove("sk");void d.offsetWidth;d.classList.add("sk")}haptic("error");toast(L3("PIN noto'g'ri","Неверный PIN","Wrong PIN"))}
-function checkPin(v,ok){hashPin(v).then(function(h){h===PINH?ok():padWrong()})}
-function showUnlock(){pad(L3("PIN kodni kiriting","Введите PIN-код","Enter your PIN"),L3("Mini App himoyalangan","Mini App защищён","The Mini App is protected"),function(v){checkPin(v,padClose)},null)}
-if(PINH)showUnlock();
-document.addEventListener("visibilitychange",function(){
- if(document.hidden){HIDT=Date.now()}
- else if(PINH&&HIDT&&Date.now()-HIDT>60000&&!$("#lock").classList.contains("on"))showUnlock()});
-function guard(fn){
- if(!(PINH&&PINBUY)){fn();return}
- pad(L3("PIN kodni kiriting","Введите PIN-код","Enter your PIN"),L3("Amalni tasdiqlash uchun","Для подтверждения операции","To confirm the action"),function(v){checkPin(v,function(){padClose();fn()})},function(){})}
-var _doBuy=doBuy;doBuy=function(){guard(_doBuy)};
-var _renderT=renderT;
-renderT=function(k){_renderT(k);var b=$("#tgo");if(b){var f=b.onclick;b.onclick=function(){guard(function(){f.call(b)})}}};
-
-function setPinFlow(){
- pad(L3("Yangi PIN","Новый PIN","New PIN"),L3("4 ta raqam kiriting","Введите 4 цифры","Enter 4 digits"),function(v1){
-  pad(L3("PINni takrorlang","Повторите PIN","Repeat the PIN"),"",function(v2){
-   if(v1!==v2){haptic("error");toast(L3("PIN mos kelmadi, qayta urining","PIN не совпал, попробуйте снова","PINs didn't match, try again"));setPinFlow();return}
-   hashPin(v1).then(function(h){PINH=h;LS.s("pin",h);padClose();syncSettings();renderSec();haptic("success");toast(L3("PIN o'rnatildi","PIN установлен","PIN set"))})
-  },function(){})
- },function(){})}
-function verifyPin(cb,title){
- pad(title||L3("Joriy PIN","Текущий PIN","Current PIN"),"",function(v){checkPin(v,function(){padClose();cb()})},function(){})}
-function openSec(){renderSec();sheet("ssh",true)}
-function renderSec(){
- var has=!!PINH;
- $("#ssh").innerHTML='<div class="grab"></div><h3>'+L3("Xavfsizlik","Безопасность","Security")+'</h3>'+
-  '<div class="pw" style="margin:0 0 12px">'+L3("PIN kod Mini App'ni ochganda so'raladi. Kod faqat shu qurilmada saqlanadi.","PIN запрашивается при открытии Mini App. Код хранится только на этом устройстве.","The PIN is asked when opening the Mini App. It is stored only on this device.")+'</div>'+
-  '<div class="list">'+
-  (has
-   ?'<div class="row" id="pchg" style="cursor:pointer"><div class="ic b"><svg class="i"><use href="#lockic"/></svg></div><div class="m"><b>'+L3("PINni o'zgartirish","Изменить PIN","Change PIN")+'</b></div><svg class="i"><use href="#go"/></svg></div>'+
-    '<div class="row"><div class="ic g"><svg class="i"><use href="#shield"/></svg></div><div class="m"><b>'+L3("Xaridlarda ham so'rash","Запрашивать при операциях","Ask on purchases too")+'</b><small>'+L3("Xarid, o'tkazma va yechishda","При покупке, переводе и выводе","On purchase, transfer, withdrawal")+'</small></div><button class="sw'+(PINBUY?" on":"")+'" id="pbuy"></button></div>'+
-    '<div class="row" id="poff" style="cursor:pointer"><div class="ic o"><svg class="i"><use href="#out"/></svg></div><div class="m"><b>'+L3("PINni o'chirish","Отключить PIN","Turn off PIN")+'</b></div><svg class="i"><use href="#go"/></svg></div>'
-   :'<div class="row" id="pset" style="cursor:pointer"><div class="ic g"><svg class="i"><use href="#lockic"/></svg></div><div class="m"><b>'+L3("PIN o'rnatish","Установить PIN","Set a PIN")+'</b><small>'+L3("4 xonali kod","4-значный код","4-digit code")+'</small></div><svg class="i"><use href="#go"/></svg></div>')+
-  '</div>';
- if($("#pset"))$("#pset").onclick=function(){sheet("ssh",false);setPinFlow()};
- if($("#pchg"))$("#pchg").onclick=function(){sheet("ssh",false);verifyPin(setPinFlow)};
- if($("#poff"))$("#poff").onclick=function(){sheet("ssh",false);verifyPin(function(){PINH="";PINBUY=false;LS.s("pin","");LS.s("pinbuy","0");syncSettings();toast(L3("PIN o'chirildi","PIN отключён","PIN turned off"))},L3("PINni kiriting","Введите PIN","Enter PIN"))};
- if($("#pbuy"))$("#pbuy").onclick=function(){PINBUY=!PINBUY;LS.s("pinbuy",PINBUY?"1":"0");this.classList.toggle("on",PINBUY)}}
-$("#secrow").onclick=openSec;
-
-// ---------- Buyurtmalarim ----------
-function openOrders(){
- if(needApi())return;
- $("#osh").innerHTML='<div class="grab"></div><h3>'+L3("Buyurtmalarim","Мои заказы","My orders")+'</h3><div style="display:grid;place-items:center;padding:28px"><span class="bsp"></span></div>';
- sheet("osh",true);
- post("/api/orders").then(function(r){
-  if(!r||!r.ok)throw 0;
-  var rows=[];
-  r.orders.forEach(function(o){
-   var st="",cls="n";
-   if(o.boost){var d=Math.ceil((o.boost.until-Date.now())/86400000);
-    if(o.boost.restored||d<=0){st=L3("Muddati tugagan","Срок истёк","Expired")}else{st=L3("Faol, "+d+" kun qoldi","Активен, осталось "+d+" дн.","Active, "+d+" days left");cls=""}
-   }else st=L3("Qabul qilingan","Принят","Accepted");
-   rows.push({at:o.at,icon:"bolt",c:"p",t:o.label+(o.boost?" @"+o.boost.channel:""),st:st,cls:cls,amt:"-"+fm(o.price)})});
-  r.withdrawals.forEach(function(w){
-   var m={pending:[L3("Kutilmoqda","Ожидает","Pending"),"w"],paid:[L3("To'langan","Выплачено","Paid"),""],refunded:[L3("Qaytarilgan","Возвращено","Refunded"),"n"]}[w.status]||["","n"];
-   rows.push({at:w.at,icon:"out",c:"b",t:L3("Yechish #"+w.id,"Вывод #"+w.id,"Withdrawal #"+w.id),st:m[0],cls:m[1],amt:"-"+fm(w.amount)})});
-  rows.sort(function(a,b){return b.at-a.at});
-  var H=rows.map(function(x){return '<div class="row"><div class="ic '+x.c+'"><svg class="i"><use href="#'+x.icon+'"/></svg></div><div class="m"><b>'+esc(x.t)+'</b><small>'+dt(x.at)+'<span class="bdg '+x.cls+'">'+esc(x.st)+'</span></small></div><span class="neg">'+x.amt+'</span></div>'}).join("");
-  $("#osh").innerHTML='<div class="grab"></div><h3>'+L3("Buyurtmalarim","Мои заказы","My orders")+'</h3><div class="list">'+(H||'<div class="row"><div class="m"><small>'+L3("Hozircha buyurtmalar yo'q","Заказов пока нет","No orders yet")+'</small></div></div>')+'</div>'
- }).catch(function(){$("#osh").innerHTML='<div class="grab"></div><h3>'+L3("Buyurtmalarim","Мои заказы","My orders")+'</h3><p class="pw">'+L3("Yuklab bo'lmadi. Keyinroq urinib ko'ring.","Не удалось загрузить. Попробуйте позже.","Could not load. Try again later.")+'</p>'})}
-$("#ordrow").onclick=openOrders;
-
-// ---------- Pul yechish ----------
-function openWithdraw(){
- if(needApi())return;
- WPICK=BAL>=WD_MIN?"main":(RB>=WD_MIN?"ref":"main");
- renderW("","");sheet("wsh",true)}
-function renderW(card,amt){
- var bal=WPICK=="main"?BAL:RB;
- $("#wsh").innerHTML='<div class="grab"></div><h3>'+L3("Pul yechish","Вывод средств","Withdraw money")+'</h3>'+
-  '<div class="tlab" style="margin:0 4px">'+L3("Qaysi kartadan","С какой карты","From")+'</div>'+
-  '<div class="cc-list" style="margin:8px 0">'+cardTile("main",WPICK=="main",WD_MIN)+cardTile("ref",WPICK=="ref",WD_MIN)+'</div>'+
-  '<div class="tlab" style="margin:10px 4px 6px">'+L3("Karta raqamingiz","Номер вашей карты","Your card number")+'</div>'+
-  '<input class="inp" id="wcard" type="text" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" value="'+esc(card)+'" style="font-size:17px;letter-spacing:1px">'+
-  '<div class="tlab" style="margin:12px 4px 6px">'+L3("Summa (kamida "+fm(WD_MIN)+")","Сумма (минимум "+fm(WD_MIN)+")","Amount (minimum "+fm(WD_MIN)+")")+'</div>'+
-  '<input class="inp" id="wamt" type="number" inputmode="numeric" placeholder="'+PH[LG]+'" value="'+esc(amt)+'">'+
-  '<div class="am" id="wch"><button data-v="'+WD_MIN+'">'+fm(WD_MIN)+'</button><button data-v="50000">50 000</button><button data-v="100000">100 000</button><button data-v="all">'+L3("Hammasi","Всё","All")+'</button></div>'+
-  '<button class="cta" id="wgo">'+L3("So'rov yuborish","Отправить запрос","Send request")+'</button>';
- $$("#wsh .cc").forEach(function(b){b.onclick=function(){WPICK=b.dataset.k;renderW($("#wcard").value,$("#wamt").value)}});
- $("#wcard").oninput=function(){var d=this.value.replace(/\D/g,"").slice(0,16);this.value=d.replace(/(\d{4})(?=\d)/g,"$1 ")};
- $$("#wch button").forEach(function(b){b.onclick=function(){$("#wamt").value=b.dataset.v=="all"?bal:b.dataset.v}});
- $("#wgo").onclick=function(){
-  var cd=$("#wcard").value.replace(/\D/g,""),a=Math.round(+$("#wamt").value);
-  if(cd.length!=16){toast(L3("Karta raqami 16 ta raqam bo'lsin","Номер карты — 16 цифр","Card number must have 16 digits"));return}
-  if(!a||a<WD_MIN){toast(L3("Minimal summa "+fm(WD_MIN)+" so'm","Минимальная сумма "+fm(WD_MIN)+" сум","Minimum amount "+fm(WD_MIN)+" UZS"));return}
-  if(a>bal){toast(L3("Kartada mablag' yetarli emas","На карте недостаточно средств","Not enough funds on the card"));return}
-  guard(function(){
-   if(BUSY)return;BUSY=true;$("#wgo").disabled=true;
-   post("/api/withdraw",{from:WPICK,amount:a,card:cd}).then(function(r){
-    BUSY=false;
-    if(!r||!r.ok){renderW($("#wcard").value,$("#wamt").value);toast(errText(r&&r.error));haptic("error");return}
-    setBal(r.balance,r.refbal);
-    T.unshift(["Yechish",dt(Date.now()),"-"+fm(a),"o","out","o"]);tx("a");
-    haptic("success");
-    $("#wsh").innerHTML='<div class="grab"></div><div class="psu"><svg class="pck" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg><h3>'+L3("So'rov qabul qilindi","Запрос принят","Request received")+'</h3><div class="psb"><b>'+mny(a)+'</b></div><p class="pw" style="background:none;margin-top:6px">'+L3("So'rov #"+r.id+". Admin pulni kartangizga tez orada o'tkazadi.","Запрос #"+r.id+". Админ скоро переведёт деньги на вашу карту.","Request #"+r.id+". The admin will transfer the money to your card soon.")+'</p></div><button class="cta" id="wclose">'+L3("Yopish","Закрыть","Close")+'</button>';
-    $("#wclose").onclick=function(){sheet("wsh",false)}
-   }).catch(function(){BUSY=false;renderW($("#wcard").value,$("#wamt").value);toast(L3("Serverga ulanib bo'lmadi","Нет связи с сервером","Server unreachable"))})})}}
-$$(".ba button")[1].onclick=openWithdraw;
-$("#wdrow").onclick=openWithdraw;
-
-// ---------- Qo'ng'iroqcha: so'nggi yangiliklar ----------
-function refreshDot(){var d=$("#bellb i");if(d)d.style.display=T.length>(+LS.g("nseen")||0)?"":"none"}
-var _tx=tx;tx=function(f){_tx(f);refreshDot()};
-function openNotes(){
- var H=T.slice(0,12).map(function(x){return '<div class="row"><div class="ic '+x[5]+'"><svg class="i"><use href="#'+x[4]+'"/></svg></div><div class="m"><b>'+esc(x[0])+'</b><small>'+esc(x[1])+'</small></div><span class="'+(x[3]=="i"?"pos":"neg")+'">'+esc(x[2])+'</span></div>'}).join("");
- $("#nsh").innerHTML='<div class="grab"></div><h3>'+L3("So'nggi yangiliklar","Последние события","Recent activity")+'</h3><div class="list">'+(H||'<div class="row"><div class="m"><small>'+L3("Hozircha yangiliklar yo'q","Новостей пока нет","Nothing new yet")+'</small></div></div>')+'</div>';
- sheet("nsh",true);LS.s("nseen",String(T.length));refreshDot()}
-$("#bellb").onclick=openNotes;
-refreshDot();
-
-// ---------- Qo'llab-quvvatlash ----------
-$("#chrow").onclick=function(){var u="https://t.me/yemayaptimi";try{TG.openTelegramLink(u)}catch(e){window.open(u,"_blank")}};
-$("#shrow").onclick=function(){$("#shr").onclick()};
-$("#rfrow").onclick=function(){if(needApi())return;refreshStock();toast(L3("Yangilanmoqda...","Обновление...","Refreshing..."))};
-$("#ov").addEventListener("click",function(){["wsh","osh","nsh","ssh"].forEach(function(id){$("#"+id).classList.remove("on")})});
-
-syncSettings();showBal();
-
-// ===== Eski oynalar: avtomatik yangilanish va ulanish ogohlantirishi =====
-function staleOff(){var e=$("#stale");if(e)e.remove()}
-function staleBanner(){
- if(!(TG&&TG.initData)||$("#stale"))return;
- var d=document.createElement("div");d.id="stale";d.className="stale";
- d.innerHTML='<div><b>'+L3("Ulanish yo'q","Нет соединения","No connection")+'</b><small>'+L3("Ma'lumotlar eskirgan. Botga /start yozib, yangi WebApp tugmasini bosing.","Данные устарели. Напишите боту /start и нажмите новую кнопку WebApp.","Data is outdated. Send /start to the bot and tap the new WebApp button.")+'</small></div><button>'+L3("Yopish","Закрыть","Close")+'</button>';
- d.querySelector("button").onclick=function(){try{TG.close()}catch(e){d.remove()}};
- document.body.appendChild(d)}
-if(TG&&TG.initData&&!API)staleBanner();
-
-// yangi versiya chiqqan bo'lsa, o'zi yangilanadi (Telegram eski nusxani saqlab qolmasligi uchun)
-(function(){
- try{
-  var n=+sessionStorage.getItem("upd")||0;if(n>=2||location.protocol=="file:")return;
-  var u=new URL(location.href);
-  var cur=(document.querySelector('meta[name="build"]')||{}).content;
-  fetch(u.origin+u.pathname+"?_="+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){
-   var m=t.match(/name="build" content="([^"]+)"/);
-   if(m&&cur&&m[1]!==cur){
-    sessionStorage.setItem("upd",String(n+1));
-    u.searchParams.set("v",String(Date.now()));
-    location.replace(u.toString())}
-  }).catch(function(){})
- }catch(e){}
-})();
-</script>
-</body>
-</html>
