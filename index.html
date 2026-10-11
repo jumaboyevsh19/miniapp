@@ -2,6 +2,7 @@
 <html lang="uz">
 <head>
 <meta charset="utf-8">
+<meta name="build" content="2026-10-11-s9">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bot Mini App</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -275,6 +276,12 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
 .bdg.n{background:var(--bg);color:var(--sub)}
 .shn{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .shn h3{margin:0}
+
+.stale{position:fixed;left:12px;right:12px;top:calc(10px + env(safe-area-inset-top,0px));z-index:90;display:flex;align-items:center;gap:12px;background:#f59e0b;color:#1b1200;border-radius:18px;padding:12px 14px;box-shadow:0 12px 28px rgba(245,158,11,.4)}
+.stale div{flex:1;min-width:0}
+.stale b{display:block;font-size:14px}
+.stale small{display:block;font-size:12px;margin-top:2px;opacity:.85}
+.stale button{flex:none;border:0;border-radius:12px;padding:9px 13px;font-size:13px;font-weight:700;background:#1b1200;color:#fff}
 </style>
 </head>
 <body>
@@ -892,7 +899,7 @@ function applyStock(n,md){
  $$("#bcn button").forEach(function(b){b.disabled=+b.dataset.n>n});
  bsum()}
 function refreshStock(){
- if(API&&TG&&TG.initData)post("/api/me").then(function(r){if(r&&r.ok){setBal(r.balance,r.refbal);applyStock(r.stock,r.maxDays);applyMe(r)}}).catch(function(){})}
+ if(API&&TG&&TG.initData)post("/api/me").then(function(r){if(r&&r.ok){setBal(r.balance,r.refbal);applyStock(r.stock,r.maxDays);applyMe(r);staleOff()}else if(!r||r.error==="auth"){staleBanner()}}).catch(function(){staleBanner()})}
 $$("#sg button").forEach(function(b){b.addEventListener("click",function(){if(b.dataset.k=="b")refreshStock()})});
 var _buy3=$("#buy").onclick;
 $("#buy").onclick=function(){
@@ -1090,6 +1097,32 @@ $("#rfrow").onclick=function(){if(needApi())return;refreshStock();toast(L3("Yang
 $("#ov").addEventListener("click",function(){["wsh","osh","nsh","ssh"].forEach(function(id){$("#"+id).classList.remove("on")})});
 
 syncSettings();showBal();
+
+// ===== Eski oynalar: avtomatik yangilanish va ulanish ogohlantirishi =====
+function staleOff(){var e=$("#stale");if(e)e.remove()}
+function staleBanner(){
+ if(!(TG&&TG.initData)||$("#stale"))return;
+ var d=document.createElement("div");d.id="stale";d.className="stale";
+ d.innerHTML='<div><b>'+L3("Ulanish yo'q","Нет соединения","No connection")+'</b><small>'+L3("Ma'lumotlar eskirgan. Botga /start yozib, yangi WebApp tugmasini bosing.","Данные устарели. Напишите боту /start и нажмите новую кнопку WebApp.","Data is outdated. Send /start to the bot and tap the new WebApp button.")+'</small></div><button>'+L3("Yopish","Закрыть","Close")+'</button>';
+ d.querySelector("button").onclick=function(){try{TG.close()}catch(e){d.remove()}};
+ document.body.appendChild(d)}
+if(TG&&TG.initData&&!API)staleBanner();
+
+// yangi versiya chiqqan bo'lsa, o'zi yangilanadi (Telegram eski nusxani saqlab qolmasligi uchun)
+(function(){
+ try{
+  var n=+sessionStorage.getItem("upd")||0;if(n>=2||location.protocol=="file:")return;
+  var u=new URL(location.href);
+  var cur=(document.querySelector('meta[name="build"]')||{}).content;
+  fetch(u.origin+u.pathname+"?_="+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){
+   var m=t.match(/name="build" content="([^"]+)"/);
+   if(m&&cur&&m[1]!==cur){
+    sessionStorage.setItem("upd",String(n+1));
+    u.searchParams.set("v",String(Date.now()));
+    location.replace(u.toString())}
+  }).catch(function(){})
+ }catch(e){}
+})();
 </script>
 </body>
 </html>
