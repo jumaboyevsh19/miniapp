@@ -224,6 +224,33 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
 .bsp{width:20px;height:20px;border-radius:50%;border:2.5px solid var(--line);border-top-color:#a855f7;animation:bspin .7s linear infinite;flex:none;margin:0 4px}
 @keyframes bspin{to{transform:rotate(360deg)}}
 .bck{width:24px;height:24px;color:#10b981;flex:none}
+
+/* ===== Ikki karta ===== */
+#qsh,#tsh{max-height:92vh;overflow-y:auto}
+.cta[disabled]{opacity:.45;box-shadow:none}
+.rcard{display:flex;align-items:center;justify-content:space-between;border-radius:22px;padding:16px 18px;margin-bottom:14px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#0f766e,#0e9f8e 60%,#34d399);box-shadow:0 12px 26px rgba(16,150,130,.3)}
+.rcard small{display:block;font-size:12.5px;opacity:.9}
+.rcard b{font-size:23px;font-weight:800;letter-spacing:-.4px}
+.rcard .rb{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border-radius:13px;padding:9px 12px;font-size:12.5px;font-weight:700}
+.cc-list{display:grid;gap:10px;margin:12px 0}
+.cc{position:relative;display:block;width:100%;text-align:left;border:2px solid transparent;border-radius:22px;padding:16px 18px;color:#fff;overflow:hidden}
+.cc.main{background:linear-gradient(135deg,#0a1f33,#0f3a55 55%,#0e7490)}
+.cc.ref{background:linear-gradient(135deg,#0f766e,#0e9f8e 60%,#34d399)}
+.cc:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0,rgba(255,255,255,.22),transparent 55%)}
+.cc>*{position:relative}
+.ccn{font-size:12.5px;opacity:.88}
+.ccb{font-size:25px;font-weight:800;letter-spacing:-.5px;margin-top:4px}
+.ccr{position:absolute!important;right:16px;top:50%;margin-top:-12px;width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.65)}
+.cc.sel{border-color:#fff;box-shadow:0 0 0 3px var(--acc)}
+.cc.sel .ccr{background:#fff;border:7px solid var(--acc)}
+.cc.low{opacity:.55}
+.cc.stat .ccr{display:none}
+.ccl{position:absolute!important;right:50px;top:16px;font-size:11px;font-weight:700;background:rgba(0,0,0,.3);padding:3px 9px;border-radius:10px}
+.qsum{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--bg);border-radius:16px;padding:13px 15px;font-size:14px}
+.qsum b{font-size:17px;white-space:nowrap}
+.qsum small{display:block;color:var(--sub);font-size:12px;margin-top:2px}
+.tsw{display:grid;place-items:center;width:44px;height:44px;margin:-6px auto;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);position:relative;z-index:2;box-shadow:var(--sh)}
+.tlab{font-size:12px;color:var(--sub);font-weight:700;margin:2px 4px 0}
 </style>
 </head>
 <body>
@@ -250,6 +277,7 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
 <symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
 <symbol id="card" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></symbol>
 <symbol id="award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.2 13.9 7 23l5-3 5 3-1.2-9.1"/></symbol>
+<symbol id="swap" viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4 4 4M17 8v12m0 0 4-4m-4 4-4-4"/></symbol>
 </defs></svg>
 
 <div class="app">
@@ -261,7 +289,7 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
 
  <section class="page on" id="home">
   <div class="bal">
-   <div class="br"><span>Umumiy balans</span><button id="eyeb"><svg class="i"><use href="#eye"/></svg></button></div>
+   <div class="br"><span>Asosiy karta</span><button id="eyeb"><svg class="i"><use href="#eye"/></svg></button></div>
    <h1 id="bv">128 500 so'm</h1>
    <span class="chg"><svg class="i"><use href="#trend"/></svg><span id="cg">0 ta taklif</span></span>
    <div class="bn"><span id="uid">ID</span><div class="chip"></div></div>
@@ -271,6 +299,8 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
     <button><svg class="i"><use href="#send"/></svg>O'tkazma</button>
    </div>
   </div>
+
+  <div class="rcard" id="rcard"><div><small>Taklif kartasi</small><b id="rbv">0 so'm</b></div><span class="rb"><svg class="i" style="width:16px;height:16px"><use href="#swap"/></svg>O'tkazma</span></div>
 
   <div class="cd">
    <div class="ch"><div><h2>Faollik</h2><small>Kirim va chiqim</small></div>
@@ -398,6 +428,8 @@ input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;widt
  <button class="lgb" data-lg="en"><b>English</b><span class="rd"></span></button>
 </div>
 <div class="sh" id="psh"></div>
+<div class="sh" id="qsh"></div>
+<div class="sh" id="tsh"></div>
 <div class="toast" id="ts"><svg class="i"><use href="#check"/></svg><span id="tt"></span></div>
 
 <script>
@@ -502,7 +534,7 @@ var DT=[["Bosh","Главная","Home"],["Xizmatlar","Услуги","Services"]
 ["Bildirishnomalar","Уведомления","Notifications"],["Yangiliklar va amallar","Новости и операции","News and activity"],["Tungi rejim","Тёмный режим","Dark mode"],["Ko'zga qulay","Комфортно для глаз","Easy on the eyes"],
 ["Tugma ovozi","Звук кнопок","Button sound"],["Bosganda ovoz chiqadi","Звук при нажатии","Plays a sound on tap"],["Yordam","Помощь","Help"],["Admin bilan bog'lanish","Связаться с админом","Contact admin"],
 ["Balansni to'ldirish","Пополнение баланса","Top up balance"],["Tasdiqlash","Подтвердить","Confirm"],["Buyurtma qabul qilindi","Заказ принят","Order received"],["To'lov so'rovi yuborildi","Запрос на оплату отправлен","Payment request sent"],
-["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Tez orada","Скоро","Coming soon"],["Kanal yoki guruhga Boost","Буст для канала или группы","Channel or group Boost"],["Kanal yoki guruhingizni yuqori darajaga ko'taring","Поднимите свой канал или группу на новый уровень","Take your channel or group to the next level"],["Kanal yoki guruh manzilini kiriting","Введите адрес канала или группы","Enter channel or group username"],["Boost soni","Количество бустов","Number of boosts"],["Necha kunga","На сколько дней","For how many days"],["Maksimal 90 kun","Максимум 90 дней","Maximum 90 days"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
+["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Tez orada","Скоро","Coming soon"],["Asosiy karta","Основная карта","Main card"],["Taklif kartasi","Реферальная карта","Referral card"],["Stars xaridi","Покупка Stars","Stars purchase"],["Premium xaridi","Покупка Premium","Premium purchase"],["Boost xaridi","Покупка буста","Boost purchase"],["Kartalar o'rtasida o'tkazma","Перевод между картами","Transfer between cards"],["Kanal yoki guruhga Boost","Буст для канала или группы","Channel or group Boost"],["Kanal yoki guruhingizni yuqori darajaga ko'taring","Поднимите свой канал или группу на новый уровень","Take your channel or group to the next level"],["Kanal yoki guruh manzilini kiriting","Введите адрес канала или группы","Enter channel or group username"],["Boost soni","Количество бустов","Number of boosts"],["Necha kunga","На сколько дней","For how many days"],["Maksimal 90 kun","Максимум 90 дней","Maximum 90 days"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
 var TR={};DT.forEach(function(x){TR[x[0]]={ru:x[1],en:x[2]}});
 var LN={Bronza:{ru:"Бронза",en:"Bronze"},Silver:{ru:"Серебро",en:"Silver"},Gold:{ru:"Золото",en:"Gold"},Platinum:{ru:"Платина",en:"Platinum"}};
 var PH={uz:"Summa, so'm",ru:"Сумма, сум",en:"Amount, UZS"},LGN={uz:"O'zbekcha",ru:"Русский",en:"English"},LG="uz",LGS=null;
@@ -686,7 +718,7 @@ function bchk(){
     var sm=kind+", @"+r.chat.username+(r.chat.members?", "+fm(r.chat.members)+" "+L3("a'zo","участников","members"):"");
     var ck=document.createElementNS("http://www.w3.org/2000/svg","svg");ck.setAttribute("class","i bck");
     var u=document.createElementNS("http://www.w3.org/2000/svg","use");u.setAttribute("href","#check");ck.appendChild(u);
-    var av=mk("div","bav",(r.chat.title||c).trim().charAt(0).toUpperCase());
+    var av=mk("div","bav",r.chat.photo?"":(r.chat.title||c).trim().charAt(0).toUpperCase());if(r.chat.photo){av.style.backgroundImage='url("'+r.chat.photo+'")';av.style.backgroundSize="cover";av.style.backgroundPosition="center"}
     bbox("ok",[av,bmeta(r.chat.title||c,sm),ck]);
     try{TG.HapticFeedback.notificationOccurred("success")}catch(e){}
    }else{
@@ -703,6 +735,102 @@ $("#buy").onclick=function(){
  if(K=="b"&&API&&normCh($("#bchan").value)&&!BCH){
   toast(BST=="load"?L3("Tekshirilmoqda, biroz kuting","Идёт проверка, подождите","Checking, please wait"):L3("Kanal yoki guruh topilmadi","Канал или группа не найдены","Channel or group not found"));return}
  _buy2()};
+
+// ===== Ikki karta: asosiy va taklif, to'lov, o'tkazma =====
+var RB=+Q.get("rb")||0,PAYITEM=null,PICK="main",TFROM="main",BUSY=false;
+function mny(n){return fm(n)+cur()}
+function showBal(){if(!hid)$("#bv").textContent=fm(BAL)+" so'm";$("#rbv").textContent=fm(RB)+" so'm"}
+function setBal(m,r){BAL=Number(m)||0;RB=Number(r)||0;showBal()}
+function sheet(id,v){$("#ov").classList.toggle("on",v);$("#"+id).classList.toggle("on",v)}
+$("#ov").addEventListener("click",function(){sheet("qsh",false);sheet("tsh",false)});
+function haptic(t){try{TG.HapticFeedback.notificationOccurred(t)}catch(e){}}
+function cardName(k){return k=="main"?L3("Asosiy karta","Основная карта","Main card"):L3("Taklif kartasi","Реферальная карта","Referral card")}
+function cardTile(k,sel,need,stat){
+ var bal=k=="main"?BAL:RB,low=need&&bal<need;
+ return '<'+(stat?"div":"button")+' class="cc '+k+(sel?" sel":"")+(low?" low":"")+(stat?" stat":"")+'" data-k="'+k+'"><div class="ccn">'+cardName(k)+'</div><div class="ccb">'+mny(bal)+'</div>'+(low?'<span class="ccl">'+L3("Yetarli emas","Недостаточно","Not enough")+'</span>':"")+'<span class="ccr"></span></'+(stat?"div":"button")+'>'}
+function needApi(){
+ if(!API||!(TG&&TG.initData)){toast(L3("Mini App'ni bot orqali oching","Откройте Mini App через бота","Open the Mini App via the bot"));return true}
+ return false}
+
+// --- sotib olish
+var HT={stars:"Stars xaridi",premium:"Premium xaridi",boost:"Boost xaridi"};
+function curItem(){
+ if(K=="b"){bclamp();return{type:"boost",channel:normCh($("#bchan").value),count:BN,days:BD,price:BN*BD*BOOST_RATE,label:BN+" boost \u00d7 "+BD+" "+L3("kun","дн.","days"),sub:"@"+normCh($("#bchan").value)}}
+ var x=D[K][N];
+ return{type:K=="s"?"stars":"premium",n:N,price:x[2],label:x[0]+(K=="p"?" Premium":""),sub:""}}
+function openPay(){
+ if(needApi())return;
+ PAYITEM=curItem();
+ PICK=BAL>=PAYITEM.price?"main":(RB>=PAYITEM.price?"ref":"main");
+ renderQ();sheet("qsh",true)}
+function renderQ(){
+ var it=PAYITEM,pm=BAL>=it.price,pr=RB>=it.price,ok=PICK=="main"?pm:pr;
+ $("#qsh").innerHTML='<div class="grab"></div><h3>'+L3("To'lov usuli","Способ оплаты","Payment method")+'</h3>'+
+  '<div class="qsum"><div><span>'+it.label+'</span>'+(it.sub?'<small>'+it.sub+'</small>':'')+'</div><b>'+mny(it.price)+'</b></div>'+
+  '<div class="cc-list">'+cardTile("main",PICK=="main",it.price)+cardTile("ref",PICK=="ref",it.price)+'</div>'+
+  (!pm&&!pr
+   ?'<div class="pw">'+L3("Ikkala kartada ham mablag' yetarli emas. Balansni to'ldiring yoki kartalar o'rtasida o'tkazma qiling.","На обеих картах недостаточно средств. Пополните баланс или переведите между картами.","Not enough funds on either card. Top up or transfer between cards.")+'</div><button class="cta" id="qtop">'+L3("Balansni to'ldirish","Пополнить баланс","Top up balance")+'</button>'
+   :'<button class="cta" id="qgo"'+(ok?"":" disabled")+'>'+L3("To'lash","Оплатить","Pay")+'</button>');
+ $$("#qsh .cc").forEach(function(b){b.onclick=function(){PICK=b.dataset.k;renderQ()}});
+ if($("#qgo"))$("#qgo").onclick=doBuy;
+ if($("#qtop"))$("#qtop").onclick=function(){sheet("qsh",false);sh(true)}}
+function errText(e){return e=="insufficient"?L3("Mablag' yetarli emas","Недостаточно средств","Not enough funds"):(e||L3("Xatolik yuz berdi","Произошла ошибка","Something went wrong"))}
+function doBuy(){
+ if(BUSY)return;BUSY=true;var it=PAYITEM;
+ var item=it.type=="boost"?{type:"boost",channel:it.channel,count:it.count,days:it.days}:{type:it.type,n:it.n};
+ $("#qgo").disabled=true;
+ post("/api/buy",{item:item,from:PICK}).then(function(r){
+  BUSY=false;
+  if(!r||!r.ok){renderQ();toast(errText(r&&r.error));haptic("error");return}
+  setBal(r.balance,r.refbal);
+  T.unshift([HT[it.type],dt(Date.now()),"-"+fm(it.price),"o","out","o"]);tx("a");
+  haptic("success");
+  $("#qsh").innerHTML='<div class="grab"></div><div class="psu"><svg class="pck" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg>'+
+   '<h3>'+L3("Buyurtma qabul qilindi","Заказ принят","Order received")+'</h3>'+
+   '<div class="psb"><b>'+it.label+'</b></div>'+
+   '<p class="pw" style="background:none;margin-top:6px">'+L3("Buyurtma #"+r.orderId+". Admin uni tez orada bajaradi.","Заказ #"+r.orderId+". Админ скоро его выполнит.","Order #"+r.orderId+". The admin will complete it soon.")+'</p></div>'+
+   '<button class="cta" id="qclose">'+L3("Yopish","Закрыть","Close")+'</button>';
+  $("#qclose").onclick=function(){sheet("qsh",false)};
+ }).catch(function(){BUSY=false;renderQ();toast(L3("Serverga ulanib bo'lmadi","Нет связи с сервером","Server unreachable"))})}
+$("#buy").onclick=function(){
+ if(K=="b"){
+  if(!normCh($("#bchan").value)){toast(L3("Kanal yoki guruh manzilini to'g'ri kiriting","Введите корректный адрес канала или группы","Enter a valid channel or group username"));$("#bchan").focus();return}
+  if(API&&!BCH){toast(BST=="load"?L3("Tekshirilmoqda, biroz kuting","Идёт проверка, подождите","Checking, please wait"):L3("Kanal yoki guruh topilmadi","Канал или группа не найдены","Channel or group not found"));return}
+ }
+ openPay()};
+
+// --- kartalar o'rtasida o'tkazma
+function openTransfer(){if(needApi())return;TFROM="main";renderT();sheet("tsh",true)}
+function renderT(keep){
+ var to=TFROM=="main"?"ref":"main",fb=TFROM=="main"?BAL:RB;
+ $("#tsh").innerHTML='<div class="grab"></div><h3>'+L3("Kartalar o'rtasida o'tkazma","Перевод между картами","Transfer between cards")+'</h3>'+
+  '<div class="tlab">'+L3("Qaysi kartadan","С какой карты","From")+'</div>'+
+  '<div class="cc-list" style="margin:8px 0">'+cardTile(TFROM,false,0,true)+'<button class="tsw" id="tsw" aria-label="swap"><svg class="i"><use href="#swap"/></svg></button><div class="tlab" style="margin-top:6px">'+L3("Qaysi kartaga","На какую карту","To")+'</div>'+cardTile(to,false,0,true)+'</div>'+
+  '<input class="inp" id="tamt" type="number" inputmode="numeric" placeholder="'+PH[LG]+'" value="'+(keep||"")+'">'+
+  '<div class="am" id="tch"><button data-v="10000">10 000</button><button data-v="50000">50 000</button><button data-v="all">'+L3("Hammasi","Всё","All")+'</button></div>'+
+  '<button class="cta" id="tgo">'+L3("O'tkazish","Перевести","Transfer")+'</button>';
+ $("#tsw").onclick=function(){var v=$("#tamt").value;TFROM=TFROM=="main"?"ref":"main";renderT(v)};
+ $$("#tch button").forEach(function(b){b.onclick=function(){$("#tamt").value=b.dataset.v=="all"?fb:b.dataset.v}});
+ $("#tgo").onclick=function(){
+  var a=Math.round(+$("#tamt").value);
+  if(!a||a<1){toast(L3("Summani kiriting","Введите сумму","Enter an amount"));return}
+  if(a>fb){toast(L3("Kartada mablag' yetarli emas","На карте недостаточно средств","Not enough funds on the card"));return}
+  if(BUSY)return;BUSY=true;$("#tgo").disabled=true;
+  post("/api/transfer",{from:TFROM,amount:a}).then(function(r){
+   BUSY=false;
+   if(!r||!r.ok){renderT($("#tamt")?$("#tamt").value:"");toast(errText(r&&r.error));haptic("error");return}
+   var out=TFROM=="main";
+   setBal(r.balance,r.refbal);
+   T.unshift(["Kartalar o'rtasida o'tkazma",dt(Date.now()),(out?"-":"+")+fm(a),out?"o":"i",out?"out":"in",out?"o":"g"]);tx("a");
+   sheet("tsh",false);haptic("success");
+   toast(L3("O'tkazma bajarildi","Перевод выполнен","Transfer completed"))
+  }).catch(function(){BUSY=false;renderT($("#tamt")?$("#tamt").value:"");toast(L3("Serverga ulanib bo'lmadi","Нет связи с сервером","Server unreachable"))})}}
+$$(".ba button")[2].onclick=openTransfer;
+$("#rcard").onclick=openTransfer;
+
+// --- boshlang'ich holat: serverdan haqiqiy balans
+showBal();
+if(API&&TG&&TG.initData)post("/api/me").then(function(r){if(r&&r.ok)setBal(r.balance,r.refbal)}).catch(function(){});
 </script>
 </body>
 </html>
