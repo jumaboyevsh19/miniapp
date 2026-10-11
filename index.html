@@ -176,6 +176,54 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .conf{position:absolute;left:0;right:0;top:0;height:0;pointer-events:none}
 .conf i{position:absolute;top:-6px;width:8px;height:12px;border-radius:2px;opacity:0;animation:pfall 2s ease-in forwards}
 @keyframes pfall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(300px) rotate(540deg);opacity:0}}
+
+/* ===== Boost ===== */
+.bhero{position:relative;overflow:hidden;display:flex;gap:14px;align-items:center;border-radius:26px;padding:18px;color:#fff;background:linear-gradient(135deg,#5b21b6,#a855f7 55%,#ec4899);box-shadow:0 16px 34px rgba(168,85,247,.32)}
+.bhero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0,rgba(255,255,255,.3),transparent 55%)}
+.bhero>*{position:relative}
+.bhero .bi{width:54px;height:54px;border-radius:18px;background:rgba(255,255,255,.2);display:grid;place-items:center;flex:none}
+.bhero .bi svg{width:28px;height:28px}
+.bhero b{display:block;font-size:19px;letter-spacing:-.3px}
+.bhero small{font-size:12.5px;opacity:.9}
+.bcard{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:16px;margin-top:12px}
+.blab{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:14px;font-weight:700}
+.blab small{font-size:12px;font-weight:600;color:var(--sub)}
+.bin{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:0 14px}
+.bin:focus-within{border-color:#a855f7}
+.bin span{color:var(--sub);font-weight:700;font-size:16px}
+.bin input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);font-size:16px;font-weight:600;padding:14px 0;font-family:inherit}
+.bstep{display:flex;align-items:center;gap:10px}
+.bstep button{flex:none;width:52px;height:52px;border-radius:17px;border:1px solid var(--line);background:var(--card2);color:var(--text);font-size:26px;font-weight:600;display:grid;place-items:center;line-height:1}
+.bstep button:active{background:rgba(168,85,247,.2)}
+.bstep input{flex:1;min-width:0;text-align:center;font-size:36px;font-weight:800;letter-spacing:-1px;background:none;border:0;outline:0;color:var(--text);font-family:inherit;font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+.bstep input::-webkit-inner-spin-button,.bstep input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.bchips{display:flex;gap:8px;margin-top:14px}
+.bchips button{flex:1;border:1px solid var(--line);background:var(--bg);color:var(--sub);border-radius:13px;padding:10px 0;font-size:13.5px;font-weight:700}
+.bchips button.on{background:rgba(168,85,247,.16);border-color:#a855f7;color:#d8b4fe}
+.bday{display:flex;align-items:baseline;justify-content:center;gap:8px;margin:0 0 16px}
+.bday b{font-size:48px;font-weight:800;letter-spacing:-1.8px;font-variant-numeric:tabular-nums}
+.bday span{font-size:17px;font-weight:700;color:var(--sub)}
+input[type=range].brg{-webkit-appearance:none;appearance:none;display:block;width:100%;height:10px;border-radius:10px;outline:none;border:1px solid var(--line);background:linear-gradient(90deg,#a855f7 var(--p,30%),var(--bg) var(--p,30%))}
+.brg::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:#fff;border:7px solid #a855f7;box-shadow:0 4px 14px rgba(168,85,247,.55)}
+.brg::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:7px solid #a855f7}
+.bmax{display:flex;justify-content:space-between;font-size:11.5px;color:var(--sub);margin-top:8px}
+
+.bchips button.on{color:#7e22ce}
+:root[data-theme="dark"] .bchips button.on{color:#d8b4fe}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bchips button.on{color:#d8b4fe}}
+.bstep button{background:var(--bg)}
+
+.bchk{align-items:center;gap:12px;margin-top:12px;background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:12px}
+.bchk.ok{border-color:#10b981}
+.bchk.err{border-color:var(--bad)}
+.bav{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#ec4899);color:#fff;display:grid;place-items:center;font-weight:800;font-size:19px;flex:none}
+.bmeta{flex:1;min-width:0}
+.bmeta b{display:block;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bmeta small{color:var(--sub);font-size:12px}
+.bchk.err .bmeta b{color:var(--bad)}
+.bsp{width:20px;height:20px;border-radius:50%;border:2.5px solid var(--line);border-top-color:#a855f7;animation:bspin .7s linear infinite;flex:none;margin:0 4px}
+@keyframes bspin{to{transform:rotate(360deg)}}
+.bck{width:24px;height:24px;color:#10b981;flex:none}
 </style>
 </head>
 <body>
@@ -251,8 +299,28 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
  </section>
 
  <section class="page" id="shop">
-  <div class="seg" id="sg"><button class="on" data-k="s">Stars</button><button data-k="p">Premium</button></div>
+  <div class="seg" id="sg"><button class="on" data-k="s">Stars</button><button data-k="p">Premium</button><button data-k="b">Boost</button></div>
   <div class="pk" id="pk"></div>
+  <div id="bst" style="display:none">
+   <div class="bhero"><div class="bi"><svg class="i"><use href="#bolt"/></svg></div><div><b>Kanal yoki guruhga Boost</b><small>Kanal yoki guruhingizni yuqori darajaga ko'taring</small></div></div>
+   <div class="bcard">
+    <div class="blab"><span>Kanal yoki guruh manzilini kiriting</span></div>
+    <div class="bin"><input id="bchan" type="text" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"></div>
+    <div class="bchk" id="bchk" style="display:none"></div>
+   </div>
+   <div class="bcard">
+    <div class="blab"><span>Boost soni</span><small id="bnr"></small></div>
+    <div class="bstep"><button id="bm" aria-label="-">&minus;</button><input id="bn" type="number" inputmode="numeric" min="1" max="1000" value="50"><button id="bp" aria-label="+">+</button></div>
+    <div class="bchips" id="bcn"><button data-n="10">10</button><button data-n="25">25</button><button data-n="50">50</button><button data-n="100">100</button></div>
+   </div>
+   <div class="bcard">
+    <div class="blab"><span>Necha kunga</span><small>Maksimal 90 kun</small></div>
+    <div class="bday"><b id="bdv">30</b><span id="bdw">kun</span></div>
+    <input class="brg" id="brg" type="range" min="1" max="90" value="30">
+    <div class="bmax"><span>1</span><span>90</span></div>
+    <div class="bchips" id="bcd"><button data-d="7">7</button><button data-d="14">14</button><button data-d="30">30</button><button data-d="60">60</button><button data-d="90">90</button></div>
+   </div>
+  </div>
   <div class="cd sum">
    <div class="row"><b>Tanlangan</b><span id="s1">100 Stars</span></div>
    <div class="row"><b>Chegirma</b><span id="s2" style="color:var(--ok)">0 so'm</span></div>
@@ -434,7 +502,7 @@ var DT=[["Bosh","Главная","Home"],["Xizmatlar","Услуги","Services"]
 ["Bildirishnomalar","Уведомления","Notifications"],["Yangiliklar va amallar","Новости и операции","News and activity"],["Tungi rejim","Тёмный режим","Dark mode"],["Ko'zga qulay","Комфортно для глаз","Easy on the eyes"],
 ["Tugma ovozi","Звук кнопок","Button sound"],["Bosganda ovoz chiqadi","Звук при нажатии","Plays a sound on tap"],["Yordam","Помощь","Help"],["Admin bilan bog'lanish","Связаться с админом","Contact admin"],
 ["Balansni to'ldirish","Пополнение баланса","Top up balance"],["Tasdiqlash","Подтвердить","Confirm"],["Buyurtma qabul qilindi","Заказ принят","Order received"],["To'lov so'rovi yuborildi","Запрос на оплату отправлен","Payment request sent"],
-["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Tez orada","Скоро","Coming soon"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
+["Havola nusxalandi","Ссылка скопирована","Link copied"],["ID nusxalandi","ID скопирован","ID copied"],["Versiya 7","Версия 7","Version 7"],["Tez orada","Скоро","Coming soon"],["Kanal yoki guruhga Boost","Буст для канала или группы","Channel or group Boost"],["Kanal yoki guruhingizni yuqori darajaga ko'taring","Поднимите свой канал или группу на новый уровень","Take your channel or group to the next level"],["Kanal yoki guruh manzilini kiriting","Введите адрес канала или группы","Enter channel or group username"],["Boost soni","Количество бустов","Number of boosts"],["Necha kunga","На сколько дней","For how many days"],["Maksimal 90 kun","Максимум 90 дней","Maximum 90 days"],["Hisob","Аккаунт","Account"],["Sozlamalar","Настройки","Settings"],["Qo'llab-quvvatlash","Поддержка","Support"],["Do'st taklif qiling","Пригласите друга","Invite a friend"],["Har bir do'st uchun 150 so'm bonus","150 сум бонус за каждого друга","150 UZS bonus for every friend"]];
 var TR={};DT.forEach(function(x){TR[x[0]]={ru:x[1],en:x[2]}});
 var LN={Bronza:{ru:"Бронза",en:"Bronze"},Silver:{ru:"Серебро",en:"Silver"},Gold:{ru:"Золото",en:"Gold"},Platinum:{ru:"Платина",en:"Platinum"}};
 var PH={uz:"Summa, so'm",ru:"Сумма, сум",en:"Amount, UZS"},LGN={uz:"O'zbekcha",ru:"Русский",en:"English"},LG="uz",LGS=null;
@@ -556,6 +624,85 @@ $("#go2").onclick=function(){
 var BA=$$(".ba button");
 BA[1].onclick=function(){toast("Tez orada")};
 BA[2].onclick=function(){toast("Tez orada")};
+
+// ===== Boost =====
+var BOOST_RATE=150,BOOST_MAX=1000,DAYS_MAX=90,BN=50,BD=30;
+function normCh(v){v=String(v||"").trim().replace(/^https?:\/\//i,"").replace(/^t\.me\//i,"").replace(/^@/,"").split(/[/?#]/)[0];return /^[A-Za-z][A-Za-z0-9_]{4,31}$/.test(v)?v:""}
+function bclamp(){BN=Math.max(1,Math.min(BOOST_MAX,Math.round(+BN)||1));BD=Math.max(1,Math.min(DAYS_MAX,Math.round(+BD)||1))}
+function bsumSummary(){
+ bclamp();var tot=BN*BD*BOOST_RATE;
+ $("#s1").textContent=BN+" boost \u00d7 "+BD+" "+L3("kun","дн.","days");
+ $("#s2").textContent="0"+cur();
+ $("#s3").textContent=fm(tot)+cur()}
+function bsum(skipInput){
+ bclamp();
+ if(!skipInput)$("#bn").value=BN;
+ $("#bdv").textContent=BD;$("#bdw").textContent=L3("kun","дней","days");
+ $("#brg").value=BD;$("#brg").style.setProperty("--p",((BD-1)/(DAYS_MAX-1)*100)+"%");
+ $("#bnr").textContent=L3("1 dan "+BOOST_MAX+" gacha","от 1 до "+BOOST_MAX,"1 to "+BOOST_MAX);
+ $$("#bcn button").forEach(function(b){b.classList.toggle("on",+b.dataset.n===BN)});
+ $$("#bcd button").forEach(function(b){b.classList.toggle("on",+b.dataset.d===BD)});
+ if(K=="b")bsumSummary()}
+var _draw=draw,_sum=sum;
+sum=function(){if(K=="b")bsumSummary();else _sum()};
+draw=function(){
+ if(K=="b"){$("#pk").style.display="none";$("#bst").style.display="block";bsum()}
+ else{$("#pk").style.display="";$("#bst").style.display="none";_draw()}};
+$("#bm").onclick=function(){BN=BN-1;bsum()};
+$("#bp").onclick=function(){BN=BN+1;bsum()};
+$("#bn").oninput=function(){BN=+this.value||0;bsum(true)};
+$("#bn").onchange=function(){bsum()};
+$$("#bcn button").forEach(function(b){b.onclick=function(){BN=+b.dataset.n;bsum()}});
+$$("#bcd button").forEach(function(b){b.onclick=function(){BD=+b.dataset.d;bsum()}});
+$("#brg").oninput=function(){BD=+this.value;bsum(true)};
+$("#bchan").onchange=function(){var c=normCh(this.value);if(c)this.value=c};
+var _buy=$("#buy").onclick;
+$("#buy").onclick=function(){
+ if(K=="b"){
+  if(!normCh($("#bchan").value)){toast(L3("Kanal yoki guruh manzilini to'g'ri kiriting","Введите корректный адрес канала или группы","Enter a valid channel or group username"));$("#bchan").focus();return}
+  toast(L3("Boost buyurtmasi qabul qilindi","Заказ на буст принят","Boost order received"));return}
+ _buy()};
+var _sl3=setLg;setLg=function(l){_sl3(l);bsum(true)};
+bsum();
+
+// ===== Kanal / guruh nomini tekshirish =====
+var BCH=null,BST="idle",BT=null,BSEQ=0;
+function bbox(cls,nodes){var b=$("#bchk");b.className="bchk"+(cls?" "+cls:"");b.style.display="flex";b.innerHTML="";nodes.forEach(function(n){b.appendChild(n)})}
+function mk(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function bmeta(t,sm){var d=mk("div","bmeta");d.appendChild(mk("b",null,t));if(sm)d.appendChild(mk("small",null,sm));return d}
+function bchk(){
+ var c=normCh($("#bchan").value);BCH=null;BST="idle";clearTimeout(BT);BSEQ++;
+ var box=$("#bchk");
+ if(!c||!API){box.style.display="none";box.innerHTML="";return}
+ BST="load";
+ bbox("",[mk("span","bsp"),bmeta(L3("Tekshirilmoqda...","Проверяем...","Checking..."))]);
+ var my=BSEQ;
+ BT=setTimeout(function(){
+  post("/api/chat",{username:c}).then(function(r){
+   if(my!==BSEQ)return;
+   if(r&&r.ok&&r.chat){
+    BCH=r.chat;BST="ok";
+    var kind=r.chat.type=="channel"?L3("Kanal","Канал","Channel"):L3("Guruh","Группа","Group");
+    var sm=kind+", @"+r.chat.username+(r.chat.members?", "+fm(r.chat.members)+" "+L3("a'zo","участников","members"):"");
+    var ck=document.createElementNS("http://www.w3.org/2000/svg","svg");ck.setAttribute("class","i bck");
+    var u=document.createElementNS("http://www.w3.org/2000/svg","use");u.setAttribute("href","#check");ck.appendChild(u);
+    var av=mk("div","bav",(r.chat.title||c).trim().charAt(0).toUpperCase());
+    bbox("ok",[av,bmeta(r.chat.title||c,sm),ck]);
+    try{TG.HapticFeedback.notificationOccurred("success")}catch(e){}
+   }else{
+    BST="err";
+    bbox("err",[bmeta(L3("Topilmadi","Не найдено","Not found"),L3("Faqat ochiq (username'li) kanal yoki guruh bo'lishi kerak","Нужен публичный канал или группа с username","Must be a public channel or group with a username"))])
+   }
+  }).catch(function(){
+   if(my!==BSEQ)return;BST="err";
+   bbox("err",[bmeta(L3("Tekshirib bo'lmadi","Не удалось проверить","Could not check"),L3("Serverga ulanib bo'lmadi","Нет связи с сервером","Server unreachable"))])
+  })},500)}
+$("#bchan").oninput=bchk;
+var _buy2=$("#buy").onclick;
+$("#buy").onclick=function(){
+ if(K=="b"&&API&&normCh($("#bchan").value)&&!BCH){
+  toast(BST=="load"?L3("Tekshirilmoqda, biroz kuting","Идёт проверка, подождите","Checking, please wait"):L3("Kanal yoki guruh topilmadi","Канал или группа не найдены","Channel or group not found"));return}
+ _buy2()};
 </script>
 </body>
 </html>
